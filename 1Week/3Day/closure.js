@@ -1,11 +1,9 @@
 let car = {};
 
-function makeCarMakeFunctions() {
+let makeFunctions = (function() {
     let make = 'Ford';
     return [() => {return make;}, (newValue) => {newValue ? make = newValue : make}];
-}
-
-let makeFunctions = makeCarMakeFunctions();
+})();
 
 car.getMake = makeFunctions[0];
 car.setMake = makeFunctions[1];
