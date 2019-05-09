@@ -16,12 +16,22 @@ artistRouter.post('/', [loggingMiddleware, (req, res) => {
 
 artistRouter.get('/artistname/:name', (req, res) => {
     let name = req.params.name;
-    res.json((() => {
-        for (let i = 0; i < artists.length; i++) {
-            if (artists[i].name === name){
-                return artists[i];
-            }
+    for (let artist of artists) {
+        if (artist.name === name) {
+            res.json(artist);
         }
-        return 'Artist not found.';
-    })());
-});
+    }
+    res.json('Artist not found.');
+})
+
+// artistRouter.get('/artistname/:name', (req, res) => {
+//     let name = req.params.name;
+//     res.json((() => {
+//         for (let i = 0; i < artists.length; i++) {
+//             if (artists[i].name === name){
+//                 return artists[i];
+//             }
+//         }
+//         return 'Artist not found.';
+//     })());
+// });
