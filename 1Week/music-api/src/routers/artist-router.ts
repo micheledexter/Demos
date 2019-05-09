@@ -23,15 +23,3 @@ artistRouter.get('/artistname/:name', (req, res) => {
     }
     res.json('Artist not found.');
 })
-
-// artistRouter.get('/artistname/:name', (req, res) => {
-//     let name = req.params.name;
-//     res.json((() => {
-//         for (let i = 0; i < artists.length; i++) {
-//             if (artists[i].name === name){
-//                 return artists[i];
-//             }
-//         }
-//         return 'Artist not found.';
-//     })());
-// });
