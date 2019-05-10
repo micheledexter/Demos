@@ -2,12 +2,13 @@ import express from 'express';
 // import { loggingMiddleware } from '../middleware/logging';
 import { users } from '../state';
 import { User } from '../models/user';
+import { authorization } from '../middleware/auth.middleware';
 
 export const userRouter = express.Router();
 
-userRouter.get('', (req, res) => {
+userRouter.get('', [authorization(['admin']), (req, res) => {
     res.json(users);
-});
+}]);
 
 // userRouter.post('/', [loggingMiddleware, (req, res) => {
 //     let message = res.json('Invalid submission.');
@@ -56,3 +57,38 @@ userRouter.get('/:id', (req, res) => {
         res.sendStatus(400);
     }
 });
+
+// lets make a login endpoint
+userRouter.post('/login', (req, res) => {
+    const {username, password} = req.body;
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+        req.session.user = user;
+        // res.send(req.session); //don't send them the session
+        res.send('You logged in');
+        // the standard is that we send them their user object 
+    } else {
+        res.sendStatus(401);
+    }
+});
+
+userRouter.patch('/:id', [authorization(['admin']), (req, res) => {
+    let id = +req.params.id;
+    let user = users.find((u) => {
+        return u.id === id;
+    });
+    if (user) {
+        let {body} = req;
+        for (let key in user) {
+            if (!body[key]) {
+                
+            } else {
+                user[key] = body[key];
+            }
+        }
+        res.json(user);
+    } else {
+        res.sendStatus(400);
+    }
+}]);

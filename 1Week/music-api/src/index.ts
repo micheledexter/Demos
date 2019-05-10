@@ -1,8 +1,9 @@
 import express from 'express';
-import { loggingMiddleware } from './middleware/logging';
+import { loggingMiddleware } from './middleware/logging.middleware';
 import bodyParser from 'body-parser';
 import { artistRouter } from './routers/artist-router';
 import { userRouter } from './routers/user-router';
+import { sessionMiddleware } from './middleware/session.middleware';
 
 const app = express();
 
@@ -17,6 +18,7 @@ const app = express();
 // current part
 app.use(loggingMiddleware);
 app.use(bodyParser.json());
+app.use(sessionMiddleware);
 
 // a piece of middleware
 // will take json attached to http body
