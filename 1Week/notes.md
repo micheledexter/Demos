@@ -533,7 +533,7 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### How do we turn JSON into JavaScript objects?
 - By using the `.parse()` method
-  -`JSON.parse('{"name": "John", "age": "25"}');`
+  - `JSON.parse('{"name": "John", "age": "25"}');`
 
 ### How do we store data about a client connection?
 - Using the `express-session` package
