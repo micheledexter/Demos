@@ -8,6 +8,59 @@ These questions relate to the following topics:
 Each question will have answers in bullet point format, with possible nested items for more specific examples.
 
 ## Core JS
+- [Why should we use JavaScript? (What it good/bad at?)](#why-should-we-use-javascript-what-is-it-goodbad-at)
+- [How do we run JavaScript? Is it compiled?](#how-do-we-run-javascript-is-it-compiled)
+- [What is ES6?](#what-is-es6)
+- [What does it stand for?](#what-does-it-stand-for)
+- [What does it mean for JavaScript?](#what-does-it-mean-for-javascript)
+- [What is OOP?](#what-is-oop)
+- [What are the 4 pillars?](#what-are-the-4-pillars)
+- [Examples in JavaScript/Typescript](#examples-in-javascripttypescript)
+- [What is Node.js? What is it used for?](#what-is-nodejs-what-is-it-used-for)
+- [What are the pieces of Node.js?](#what-are-the-pieces-of-nodejs)
+- [What is REPL?](#what-is-repl)
+- [What is a garbage collector?](#what-is-a-garbage-collector)
+- [What is its role?](#what-is-its-role)
+- [How do we know what to collect?](#how-do-we-know-what-to-collect)
+- [What are naming conventions?](#what-are-naming-conventions)
+- [How do we name variables/functions/classes/interfaces?](#how-do-we-name-variablesfunctionsclassesinterfaces)
+- [How do we make a variable in JavaScript?](#how-do-we-make-a-variable-in-javascript)
+- [What are the scopes of variables?](#what-are-the-scopes-of-variables)
+- [Which variables have which scopes?](#which-variables-have-which-scopes)
+- [What are the types of JavaScript?](#what-are-the-types-of-javascript)
+- [What are the differences between types for no value?](#what-are-the-differences-between-types-for-no-value)
+- [How do we make strings in JavaScript?](#how-do-we-make-strings-in-javascript)
+- [Which way should we generally use?](#which-way-should-we-generally-use)
+- [How do we declare a function in JavaScript?](#how-do-we-declare-a-function-in-javascript)
+- [How do function params work?](#how-do-function-params-work)
+- [What is pass by value? How does it work?](#what-is-pass-by-value-how-does-it-work)
+- [What is a callback function?](#what-is-a-callback-function)
+- [Difference between synchronous and asynchronous?](#difference-between-synchronous-and-asynchronous)
+- [What is functional programming?](#what-is-functional-programming)
+- [What are first class functions, pure functions?](#what-are-first-class-functions-pure-functions)
+- [Why do we want immutable data?](#why-do-we-want-immutable-data)
+- [How do we do flow control in JavaScript?](#how-do-we-do-flow-control-in-javascript)
+- [What operators do our expressions have?](#what-operators-do-our-expressions-have)
+- [==vs===](#-vs-)
+- [What are truthy falsy values?](#what-are-truthy-falsy-values)
+- [What are short circuit operators?](#what-are-short-circuit-operators)
+- [What are the guard and default operators?](#what-are-the-guard-and-default-operators)
+- [How can we make objects in JavaScript?](#how-can-we-make-objects-in-javascript)
+- [How to add fields after they exist?](#how-to-add-fields-after-they-exist)
+- [What is prototypical inheritance?](#what-is-prototypical-inheritance)
+- [How do arrays work in JavaScript?](#how-do-arrays-work-in-javascript)
+- [What are methods we use with arrays?](#what-are-methods-we-use-with-arrays)
+- [How does array sizing work?](#how-does-array-sizing-work)
+- [What is the spread operator? Why use it?](#what-is-the-spread-operator-why-use-it)
+- [What is destructuring? Why use it?](#what-is-destructuring-why-use-it)
+- [What is a closure in JavaScript?](#what-is-a-closure-in-javascript)
+- [What are the 4 steps to get a closure?](#what-are-the-4-steps-to-get-a-closure)
+- [How do we make a new error in JavaScript?](#how-do-we-make-a-new-error-in-javascript)
+- [How do we handle an error in JavaScript?](#how-do-we-handle-an-error-in-javascript)
+- [Do we need a catch? A finally?](#do-we-need-a-catch-a-finally)
+- [What are the pieces that give JavaScript its asynchronous nature?](#what-are-the-pieces-that-give-javascript-its-asynchronous-nature)
+- [How do those pieces work together?](#how-do-those-pieces-work-together)
+- [Do we have multithreading in JavaScript?](#do-we-have-multithreading-in-javascript)
 
 ### Why should we use JavaScript? (What is it good/bad at?)
 - JS is good at event-based programming
@@ -344,6 +397,19 @@ Each question will have answers in bullet point format, with possible nested ite
 
 
 ## TypeScript
+- [What is TypeScript? How does it relate to JavaScript?](#what-is-typescript-how-does-it-relate-to-javascript)
+- [How do we run TypeScript?](#how-do-we-run-typescript)
+- [What does TypeScript give us?](#what-does-typescript-give-us)
+- [What are the types in TypeScript? Why do we want them?](#what-are-the-types-in-typescript-why-do-we-want-them)
+- [Can variables have multiple types?](#can-variables-have-multiple-types)
+- [How do we make an interface?](#how-do-we-make-an-interface)
+- [How do we have a class use an interface?](#how-do-we-have-a-class-use-an-interface)
+- [What do interfaces give us? Why use them?](#what-do-interfaces-give-us-why-use-them)
+- [How do function params work in TypeScript?](#how-do-function-params-work-in-typescript)
+- [What are optional params? Default params?](#what-are-optional-params-default-params)
+- [What are the ES6 imports and exports?](#what-are-the-es6-imports-and-exports)
+- [What is the syntax?](#what-is-the-syntax)
+- [What is a default export?](#what-is-a-default-export)
 
 ### What is TypeScript? How does it relate to JavaScript?
 - TypeScript is a superset of JavaScript developed by Microsoft that allows for developers to have more control over the structure, input, and output of their JavaScript code
@@ -380,7 +446,7 @@ Each question will have answers in bullet point format, with possible nested ite
 - Having defined types gives us greater control over what we are programming
   - There are almost never going to be times when you want to be changing your variable types, and this increases the integrity of your code
 
-### Can variable have multiple types?
+### Can variables have multiple types?
 - Yes, by using the pipe (`|`) key between the types
   - `let var1: number | string = '1';`
 
@@ -427,6 +493,17 @@ Each question will have answers in bullet point format, with possible nested ite
 
 
 ## Web Design
+- [What is the fullstack?](#what-is-the-fullstack)
+- [What does MVC stand for?](#what-does-mvc-stand-for)
+- [What does the design pattern look like?](#what-does-the-design-pattern-look-like)
+- [What is SOA? Why use it?](#what-is-soa-why-use-it)
+- [What are Web Services?](#what-are-web-services)
+- [What are the reasons we use Web Services?](#what-are-the-reasons-we-use-web-services)
+- [What ways do we implement Web Services?](#what-ways-do-we-implement-web-services)
+- [What is Rest?](#what-is-rest)
+- [What are its principles?](#what-are-its-principles)
+- [What is HTTP? What are the pieces of an HTTP request?](#what-is-http-what-are-the-pieces-of-an-http-request)
+- [What are the HTTP methods? Status codes?](#what-are-the-http-methods-status-codes)
 
 ### What is the fullstack?
 - Every technology from the front to the back
@@ -503,6 +580,17 @@ Each question will have answers in bullet point format, with possible nested ite
 
 
 ## Express
+- [What is Express? Why do we use it?](#what-is-express-why-do-we-use-it)
+- [How do we make an endpoint?](#how-do-we-make-an-endpoint)
+- [How do we have Express get web traffic?](#how-do-we-have-express-get-web-traffic)
+- [What are Express routers? Why use them?](#what-are-express-routers-why-use-them)
+- [What is middleware?](#what-is-middleware)
+- [How do we turn JSON into JavaScript objects?](#how-do-we-turn-json-into-javascript-objects)
+- [How do we store data about a client connection?](#how-do-we-store-data-about-a-client-connection)
+- [Is this Restful?](#is-this-restful)
+- [What can we use to be Restful?](#what-can-we-use-to-be-restful)
+- [What does it mean to consume a Restful API?](#what-does-it-mean-to-consume-a-restful-api)
+- [How can we expose our Restful API?](#how-can-we-expose-our-restful-api)
 
 ### What is Express? Why do we use it?
 - Express is a web application framework for Node.js
