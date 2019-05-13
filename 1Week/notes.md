@@ -532,7 +532,8 @@ Each question will have answers in bullet point format, with possible nested ite
 - Any piece of software that runs between two others
 
 ### How do we turn JSON into JavaScript objects?
-- Technically, JSON is a JS object, but we can parse using whichever parsing methods we need
+- By using the `.parse()` method
+  -`JSON.parse('{"name": "John", "age": "25"}');`
 
 ### How do we store data about a client connection?
 - Using the `express-session` package
