@@ -1,15 +1,15 @@
 # Week 1 Study Questions
 These questions relate to the following topics:
-- Core JS
-- TypeScript
-- Web Design
-- Express
+- [Core JS](#core-js)
+- [TypeScript](#typescript)
+- [Web Design](#web-design)
+- [Express](#express)
 
 Each question will have answers in bullet point format, with possible nested items for more specific examples.
 
 ## Core JS
 
-### Why should we use JavaScritpt? (What is it good/bad at?)
+### Why should we use JavaScript? (What is it good/bad at?)
 - JS is good at event-based programming
   - Think of the stack/heap, C++ API/Web API, callback queue, and event loop 
 - Live development of libraries and frameworks
