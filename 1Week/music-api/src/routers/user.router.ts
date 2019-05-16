@@ -3,7 +3,7 @@ import express from 'express';
 import { users } from '../state';
 import { User } from '../models/user';
 import { authorization } from '../middleware/auth.middleware';
-import { getAllUsersService, getUserByIdService } from '../service/users.service';
+import { getAllUsersService, getUserByIdService, findUserByUsernameAndPasswordService } from '../service/users.service';
 
 export const userRouter = express.Router();
 
@@ -12,8 +12,31 @@ userRouter.get('/', [authorization(['admin']), async (req, res) => {
 }]);
 
 userRouter.get('/:id', [authorization(['admin']), async (req, res) => {
-    res.json(await getUserByIdService(parseInt(req.params.id)));
+    let id = +req.params.id;
+    if (isNaN(id)) {
+        res.sendStatus(400);
+    } else {
+        let user = await getUserByIdService(parseInt(req.params.id));
+        if (user) {
+            res.json(user);
+        }
+    }
+    res.send(404);
 }]);
+
+// userRouter.post('/login', async (req, res) => {
+//     const b = req.body;
+//     const user = await getUserByLoginService(b.username, b.password);
+    
+//     if (user) {
+//         req.session.user = user;
+//         // res.send(req.session); //don't send them the session
+//         res.send('You logged in');
+//         // the standard is that we send them their user object 
+//     } else {
+//         res.sendStatus(401);
+//     }
+// });
 
 // userRouter.post('/', [loggingMiddleware, (req, res) => {
 //     let message = res.json('Invalid submission.');
@@ -66,7 +89,8 @@ userRouter.post('/', (req, res) => {
 // lets make a login endpoint
 userRouter.post('/login', (req, res) => {
     const {username, password} = req.body;
-    const user = users.find(u => u.username === username && u.password === password);
+    // const user = users.find(u => u.username === username && u.password === password);
+    let user = findUserByUsernameAndPasswordService(req, username, password);
 
     if (user) {
         req.session.user = user;
