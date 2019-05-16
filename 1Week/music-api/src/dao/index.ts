@@ -1,13 +1,15 @@
 import {Pool} from 'pg';
-require('dotenv').config();
+import dotenv from 'dotenv';
+
+// use environment variables
+dotenv.config();
+const env = process.env;
+console.log(env.MUSIC_API_USERNAME);
 
 // We are going to use a connection pool to help us manage our connections to the db
 // we do this because making new connections is very expensive (takes a long time)
 // so we configure the pool to make all the connections right away then share them
 // in use, we will ask the pool for a connection and when we are done we will close
-
-// use environment variables
-const env = process.env;
 
 export const connectionPool = new Pool({
     user: env.MUSIC_API_USERNAME,
