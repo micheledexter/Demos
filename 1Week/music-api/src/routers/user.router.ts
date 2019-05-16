@@ -3,11 +3,16 @@ import express from 'express';
 import { users } from '../state';
 import { User } from '../models/user';
 import { authorization } from '../middleware/auth.middleware';
+import { getAllUsersService, getUserByIdService } from '../service/users.service';
 
 export const userRouter = express.Router();
 
-userRouter.get('', [authorization(['admin']), (req, res) => {
-    res.json(users);
+userRouter.get('/', [authorization(['admin']), async (req, res) => {
+    res.json(await getAllUsersService());
+}]);
+
+userRouter.get('/:id', [authorization(['admin']), async (req, res) => {
+    res.json(await getUserByIdService(parseInt(req.params.id)));
 }]);
 
 // userRouter.post('/', [loggingMiddleware, (req, res) => {
@@ -48,15 +53,15 @@ userRouter.post('/', (req, res) => {
 //     res.json(`User id ${id} not found`);
 // });
 
-userRouter.get('/:id', (req, res) => {
-    let id = +req.params.id; // id is string by default, adding the + turns to int
-    let user = users.find((u) => u.id === id);
-    if (user) {
-        res.json(user);
-    } else {
-        res.sendStatus(400);
-    }
-});
+// userRouter.get('/:id', [authorization(['admin']), (req, res) => {
+//     let id = req.params.id; // id is string by default, adding the + turns to int
+//     let user = users.find((u) => u.id === id);
+//     if (user) {
+//         res.json(user);
+//     } else {
+//         res.sendStatus(400);
+//     }
+// }]);
 
 // lets make a login endpoint
 userRouter.post('/login', (req, res) => {

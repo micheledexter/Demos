@@ -1,8 +1,8 @@
 import express from 'express';
 import { loggingMiddleware } from './middleware/logging.middleware';
 import bodyParser from 'body-parser';
-import { artistRouter } from './routers/artist-router';
-import { userRouter } from './routers/user-router';
+import { artistRouter } from './routers/artist.router';
+import { userRouter } from './routers/user.router';
 import { sessionMiddleware } from './middleware/session.middleware';
 
 const app = express();
