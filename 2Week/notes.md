@@ -64,3 +64,35 @@ Each question will have answers in bullet point format, with possible nested ite
     - Includes (nothing but):
       - SELECT
         - `SELECT ( * | column_name ) FROM table_name[ WHERE column_name=value];`
+- **Transaction Control Language** - *TCL*
+  - Sublanguage which allows us to finalize and revert changes to our database
+  - "Transaction" refers to a measure of work on our database.
+    - Includes:
+      - BEGIN
+        - `BEGIN;`
+      - COMMIT
+        - `COMMIT;`
+      - SAVEPOINT
+        - `SAVEPOINT savepoint_name;`
+      - ROLLBACK
+        - `ROLLBACK TO SAVEPOINT savepoint_name;`
+
+### What is multiplicity?
+- The cardinality + participation, so there are 10 possible multiplicities:
+  - 0..1 -- 0..1
+  - 0..1 -- 1..1
+  - 1..1 -- 1..1
+  - 0..1 -- 0..*
+  - 0..1 -- 1..*
+  - 1..1 -- 0..*
+  - 1..1 -- 1..*
+  - 0..* -- 0..*
+  - 0..* -- 1..*
+  - 1..* -- 1..*
+
+### What is cardinality?
+- Cardinality defines the relationships that we have in our database:
+  - One-to-one
+  - One-to-many
+  - Many-to-many
+    - This relationship requires a bridge table to exist
