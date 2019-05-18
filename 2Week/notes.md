@@ -47,5 +47,20 @@ Each question will have answers in bullet point format, with possible nested ite
       - DELETE
         - `DELETE FROM table WHERE column_name=value;`
       - SELECT
-        - `SELECT ( * | value ) FROM table_name[ WHERE colomn_name=value];`
+        - `SELECT ( * | column_name ) FROM table_name[ WHERE colomn_name=value];`
 - **Data Control Language** - *DCL*
+  - Sublanguage that is used to control who can access our database, schemas, tables, ect.
+    - Includes:
+      - GRANT
+        - `GRANT CONNECT ON DATABASE database_name TO user_name;`
+      - REVOKE
+        - `REVOKE ALL PRIVILEGES ON SCHEMA schema_name FROM user_name;`
+      - CREATE
+        - `CREATE USER user_name WITH PASSWORD 'user_password';`
+      - DROP
+        - `DROP USER user_name;`
+- **Data Query Language** - *DQL*
+  - Sublanguage that we use to query our database
+    - Includes (nothing but):
+      - SELECT
+        - `SELECT ( * | column_name ) FROM table_name[ WHERE column_name=value];`
