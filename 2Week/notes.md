@@ -338,3 +338,41 @@ Each question will have answers in bullet point format, with possible nested ite
   - If you have no overlapping candidate keys, you are guaranteed to be in BCNF
     - A candidate key is any key that uniquely identifies a record
     - This is the highest level any company is likely to ever aim for
+
+### What is PL/pgSQL?
+- It's the procedural language for PostgreSQL
+  - Allows us to create functions, stored procedures, triggers, and sequences that we can use to manipulate our data
+
+### What are functions?
+- Functions (just like in any other language) take 0 or more values and can return a value or perform work on a value
+
+### What are triggers?
+- A trigger is like a stored procedure that is automatically invoked whenever a specified event is performed
+  - An example of this is an auto-increment trigger for primary keys in a table
+
+### What is a view?
+- A view is similar to is a representation of data created from one or more tables that might be frequently called upon
+  - If I am frequently making queries to my database that require joining multiple tables together, I might create a view instead of constantly using joins for convenience
+
+### What layers to we split our server into?
+- One common architectural pattern is called the Model-View-Controller (MVC)
+  - Everyone [has their own view](https://www.google.com/search?tbm=isch&q=model+view+controller) on how this is represented, and how it works (don't get me started on my own feelings about it)
+  - We represent it as...
+    - **View**
+      - The end-user, whether it's in a browser or via postman
+    - **Controller**
+      - Requests are managed by endpoints and responses are sent as they are processed by the business logic layer
+      - The business logic (service) does any processing it needs on data before sending it to a database access object
+      - Database access objects connect to the database (model) and send queries and get responses
+    - **Model**
+      - Our persistent layer (usually some form of database)
+      - Handles all of the database stuff (CRUD operations)
+      - returns anything it needs to to the controller
+  - As long as you understand how the MVC works at its foundation, you're golden as Freddie
+
+### What is each layer's purpose?
+- See outline above
+
+### What is a DAO?
+- A Database Access Object
+
