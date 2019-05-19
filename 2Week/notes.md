@@ -333,7 +333,7 @@ Each question will have answers in bullet point format, with possible nested ite
   - Must satisfy 2NF
   - Eliminates all transitive dependencies
     - If we can deduce the primary key of a dependency, then we can put it into another table and reference it with a foreign key
-- **BCNF** - *Boyce-Codd Normal Form* (3.5NF)
+- **BCNF** (3.5NF) - *Boyce-Codd Normal Form*
   - Must satisfy 3NF
   - If you have no overlapping candidate keys, you are guaranteed to be in BCNF
     - A candidate key is any key that uniquely identifies a record
