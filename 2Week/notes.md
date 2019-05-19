@@ -376,3 +376,120 @@ Each question will have answers in bullet point format, with possible nested ite
 ### What is a DAO?
 - A Database Access Object
 
+### What role does a DAO have in our program?
+- A DAO serves as an interface between our service layer and our persistence layer
+  - In our particular program, we're using the DAO as the actual implementation, but usually we'd use the DAO as an interface and have different implementations of the DAO so that regardless of which database we're using (it makes sense) we could use different implentations of a DAO
+  
+### What is pg?
+- 'pg' (or 'node-postgres') is a non-blocking PostgreSQL client for Node.js.
+
+### Why do we use pg?
+- While node has all of the functionality for handling HTTP requests without pg, it would be a pain to actually write all of the functionality by ourselves. Since [someone else](https://www.npmjs.com/~brianc) already wrote a library for it, we don't want to (and shouldn't) write additional code for handling HTTP requests because it would be a waste of our time and we would probably do it worse than them anyway.
+
+### What is a connection pool? What design patterns does it follow?
+- A connection pool is a pool where instead of having each client create their own connection, they can essentially "check out" a connection from the pool to avoid instantiating their own costly connection.
+  - The pool itself would act as a librarian of sorts, if a connection is available, it would allow the client can use it, if all connections are taken, the client would have to wait for another client to close their connection before "checking" out a connection
+- This follows the "object pool" design pattern.
+
+### Why use a connection pool?
+- Instantiating a connection is costly, and if there is already a connection available, this saves on time opening and closing connections
+
+### How do we write a query in pg?
+- Assuming we already have a connection, we would do it one or more steps, I'll base my crappy examples on an object called `user` being passed in as a parameter.
+  - Single-line query approach:
+    - `let result = client.query('SELECT * FROM login WHERE user_name=$1 AND user_pass=$2;', [user.username, user.password])`
+    - This will get the job done, but as more parameters are used in the query, things are gonna get very messy very quickly, so this is probably only a good option for smaller queries
+  - Two-line query approach:
+    - `let queryText = 'SELECT * FROM login WHERE user_name=$1 AND user_pass=$2;';`
+    - `let result = client.query(queryText, [user.username, user.password]);`
+    - This is best for most queries, and is better for readability
+  - Multi-line query approach:
+    - `let username = user.username;`
+    - `let password = user.password;`
+    - `let queryText = 'SELECT * FROM login WHERE user_name=$1 AND user_pass=2;';`
+    - `let result = client.query(queryText, [username, password]);`
+    - Depending on how large your query is getting, this may be easier (and yes, I know deconstructing the object in one line was an option in this case, but I am trying to illustrate a point here that it may not always be an option)
+
+### What is the danger of putting values directly into our queries?
+- That little [Bobby Tables](https://xkcd.com/327/) attends your school and you're the DBA...
+- All kidding aside, SQL injection or queries that can't handle certain input because it breaks the query
+  - pg helps sanitize inputs and we should be grateful for that, because none of us wants to even try to sanitize code.
+
+### What is a parameterized query? What problem does it solve?
+- A parameterized query (or "prepared statement") is how we make queries to our database and ensure that the query we send is safe.
+- It solves query sanitization (makes sure it's safe) before sending the query to the database
+
+### How do you write a parameterized query?
+- `client.query('SELECT * FROM table WHERE param1=$1 AND param2=$2;', [par1, par2]);`
+  - `$1` and `$2` are respective placeholders for `par1` and `par2`
+
+### What is a promise in JS?
+- The most gigantic headache and simultaneously somehow one of the best parts of JS. Let me explain...
+  - A promise is exactly what it sounds like, it's a promise of some future value, but in its present state, is a placeholder for a future value from an asynchronous function
+  - The *headache* portion of it is that a promise can hold two simultaneous types, one for if the promise succeeds, and one for if the promise fails, and if you need to nest async functions, you have promises inside of promises resulting in (you guessed it!) MEGA-PROMISES, which can resolve to even MORE types!
+
+### What does a function returning a promise signify about when the function is run? What two ways can we deal with promises?
+- It signifies that the function is run asynchronously
+- We can either use `.then()` and `.catch()` callbacks or use `async` and `await`
+  - The HUGE difference here is that `then()` and `catch()` **_DO NOT_** wait for the promise to be resolved before continuing execution, whereas `async` and `await` **_DO_**
+    - Think of `await` as hitting the 'pause' button, it suspends execution until the promise is resolved, so these two different methods **_DO_** have very valid and different applications.
+
+### What do we need to include with either way of dealing with promises?
+- Error handling
+  - Obviously `.then()` has `.catch()`, but for `async` and `await`, at least the base promise (where the error originates) should be within a `try/catch/finally` block
+
+### What is testing?
+- Writing code to verify our other code works
+
+### What is TDD?
+- Test Driven Development
+  - All tests are written before any part of the code is written.
+
+### What does Red Green Refactor mean?
+- Red: Write all tests and they fail
+- Green: Write our function until all tests pass
+- Refactor: Functionality requirements have changed and we need to start over
+
+### What is Unit testing?
+- A method of testing where the smallest component (unit) of a piece of software or application is tested
+  - Tests can be written before, during, or after the code is actually written, but the most important thing is that each unit is being tested
+
+### What things do we want from a unit testing tool?
+- A test runner: the thing that actually runs the tests
+- An assertation library: Provides the necessary components for making statements like "assert that plant(magic_bean) grows beanstalk"
+- Mocking: Creating mock functions of our own
+- Test coverage reporting: _How much_ code is tested? _What_ code is tested? _How many_ tests are passing?
+
+### What tool do we use for unit testing?
+- There are plenty available, but _we_ are using jest
+
+### How do I make a test suite? A single test?
+- For a test suite:
+    ```javascript
+    describe('test suite', () => {
+        beforeAll(() => {
+            mockFunc.mockImplementation((wasps, hornets) => wasps + hornets * Infinity);
+        });
+
+        test('attacks should be 7 for params 7, 0', () => {
+            const res = attacks(7, 0);
+            expect(res).toEqual(7);
+        });
+
+        test('attacks should be Infinity for params 1, 1', () => {
+            const res = attacks(1, 1);
+            expect(res).toEqual(Infinity);
+        });
+    });
+    ```
+- For a single test, see a single test above
+
+### How can I mock a function?
+- Depending on what you need to mock about it, you can either use `.mockImplementation(([var]) => {...})` or you can just set the return values using `.mockReturnValueOnce([val])`or `.mockReturnValue([val])` for repeating return values
+
+### What kind of file do I put tests in?
+- It's based on the file extension of the original file, so it's dynamic, but `.spec.[ext]` where `ext` is ending of the original file
+  - So for a `ts` file it would be `.spec.ts`, for a `js` file it would be `.spec.js`, etc.
+
+### Where do I put the tests in my project structure?
+- You would put them in a folder (can be named `test`) in the same directory as the `src` directory with the same filestructure as the src directory
