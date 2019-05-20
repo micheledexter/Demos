@@ -220,7 +220,7 @@ Each question will have answers in bullet point format, with possible nested ite
     - `SELECT * FROM users WHERE type IN (SELECT type FROM users WHERE type='users');`
 - EXISTS
   - Can be used with only subqueries
-  - Checks for the existence of the value within the subquery and returns `TRUE` if found
+  - Checks for the existence of a record within the subquery and returns `TRUE` if found
     - Example:
       - `SELECT * FROM users WHERE type EXISTS (SELECT type FROM users WHERE type='user');`
 - `IN` is better for using a set of values, but `EXISTS` is better for using a subquery because `IN` was optimized for value checking and `EXISTS` was optimized for checking the existence of records.
@@ -338,9 +338,9 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What are the different types of reads we can get within transactions?
 - For a particular transaction:
-    - Committed
+  - Committed
     - A read has been committed (persisted) to the database
-    - Uncommitted/non-committed
+  - Uncommitted/non-committed
     - A read has not been committed (persisted) to the database
 
 ### What are the transaction isolation levels and what do they prevent?
