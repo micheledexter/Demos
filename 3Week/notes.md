@@ -71,6 +71,12 @@ Each question will have answers in bullet point format, with possible nested ite
   - External styling (using the `<style>` element as well)
     - A style sheet is referenced in the opening `style` tag using the [`rel`](https://www.w3schools.com/tags/att_rel.asp) and [`href`](https://www.w3schools.com/tags/att_href.asp) attributes
 
+### How can we select elements to be styled?
+- There are [a number of different methods](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) (and I am not going to go through all of them) but three of the common methods are:
+  - By id
+  - By class
+  - By element
+
 ### What are some examples of CSS attributes?
 - Again, [w3schools.com](https://www.w3schools.com/) has a [huge reference list of CSS properties/attributes](https://www.w3schools.com/cssref/default.asp), and some examples are:
   - [`background-color`](https://www.w3schools.com/cssref/pr_background-color.asp) - sets the background color of the element
@@ -79,6 +85,11 @@ Each question will have answers in bullet point format, with possible nested ite
     - `background-color: #00ff00;`
     - `background-color: rgb(0, 255, 0);`
   - [`border`](https://www.w3schools.com/cssref/pr_border.asp) - sets border width, style and color
-    - `border: 3px solid black;
+    - `border: 3px solid black;`
   - [`dispay`](https://www.w3schools.com/cssref/pr_class_display.asp) - specifies how an element should be displayed
     - `display: inline-block;`
+
+### What is the box model?
+- The components that make up an element, each element has a margin, border, padding, and the content itself, all of which together look like this:
+  > ![Box model](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
+
