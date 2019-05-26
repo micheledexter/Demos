@@ -91,7 +91,7 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What is the box model?
 - The components that make up an element, each element has a margin, border, padding, and the content itself, all put together they make up this model:
-  ![Box model](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
+  > ![Box model](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
 
 ### What is flex?
 - [Flex (or flex-box)](https://www.w3schools.com/css/css3_flexbox.asp) is a layout module for creating responsive HTML layout structures without needing to use floats or positions
@@ -140,7 +140,7 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What is CORS?
 - Cross-Origin Resource Sharing, and it apparently works like this:
-  ![Cross-Origin Resource Sharing diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/512px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png)
+  > ![Cross-Origin Resource Sharing diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/512px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png)
 
 ### Why is CORS important?
 - Because it protects the user from making requests from one location to another if they do not have the proper header permissions as a result of cross-site scripting (XSS)
@@ -206,3 +206,125 @@ Each question will have answers in bullet point format, with possible nested ite
     - A sprint is a period of time typically between 1-3 weeks where a selection of user stories chosen by a Scrum Master should be completed
   - **Velocity**
     - A scrum team's velocity is based on how many user stories it can get through in a sprint
+
+### What are user stories? How do we value them?
+- User stories are basically features that will be included in the project
+- Values for user stories can be decided in a couple of different ways:
+  - Scrum masters can get together and vote on what they believe to be the scores of the user stories (based on their own scoring methodology) and if they don't all vote on the same thing, they will talk about why they chose what they chose, and scores aren't assigned until everyone unanimously agrees on what a score for a particular user story should be
+  - Scrum teams can decide on what a score for a user story should be following the same system as outlined above
+  - A combination of the two systems listed above, although I don't know how that would work out
+
+### What does "velocity" mean?
+- Velocity is how many user stories a particular scrum team can accomplish in a sprint, and is calculated based on the sum of the values of the user stories over the course of a sprint
+  - If I have user stories with the values 1, 2, 3, 5 and 7 for a sprint and we accomplished them all right on time, then our velocity for this sprint would be 1 + 2 + 3 + 5 + 7 = 18
+
+### What is DevOps? What problem is it trying to solve?
+- DevOps is short for "Development Operations" and was created to try to bridge the gap between development and operations, two different entities that need to have more communication and partnership between each other
+- Basically, this was the problem:
+  - Developer: "Here's my code, you can put it up on the servers now."
+  - Operations: "Uh... thanks, but this isn't working because of X, Y and Z."
+  - Developer: "Not my problem, I did my end."
+  - Operations: "..."
+
+### What are some of the behaviors we develop to follow DevOps?
+- Dynamic configuration
+- Using an SCM like GitHub (or something similar)
+- Automatic testing of our code
+- Package managers (like NPM)
+- Work in an environment close to production
+- Use pipelines
+
+### What is a pipeline?
+- At its core, a pipeline is an automated system of processes that accomplishes some task for us
+
+### What is continuous integration?
+- Continuous integration is a pipeline that allows for developers to produce code, push it to an SCM, a test server sees the changes to the SCM and pulls the changes, tests them, and then if the changes pass testing, they are integrated into the build
+  - Development -> SCM -> Tests -> Build
+
+### What is continuous delivery?
+- Continuous delivery is a continuous integration pipeline that also automates the build into User Acceptance Testing (UAT), where a user is able to look at the changes in a production-like environment and then send them to production
+  - Development -> SCM -> Tests -> Build -> UAT (manual)
+
+### What is continuous development?
+- Continuous development is continuous delivery but the UAT phase is automated so that basically once a change is made by the developer, it is pipelined all the way from development to production
+  - Development -> SCM -> Tests -> Build -> UAT -> Production
+
+### What is the "cloud"? Cloud infrastructure?
+- The "cloud" is a network of other peoples' computers
+  - A single server doing work for you on the internet does not make it a "cloud" server just because it's someone else's computer, that makes it an online server. "Cloud computing" is specifically defined as "the practice of using **_a network of remote servers hosted on the Internet_** to store, manage, and process data, rather than a local server or a personal computer."
+    - This means the barrier for entry into cloud computing is high
+  - Cloud infrastructure is specifically a network of hardware offered as a service (Infrastructure as a Service) such as EC2 (which is CPU + RAM)
+
+### What are some of the services you know?
+- **RDS** - Relational Database Service
+  - Used for relational databases (duh)
+- **EC2** - Elastic Cloud Computing
+  - Used for running servers
+- **EBS** - Elastic Block Store
+  - Can only be used in conjunction with EC2
+  - Isn't publicly accessible via the web
+  - Great for logging applications or use cases where there's going to be a lot of reading/writing to the system
+    - Like a live RDS for instance
+- **ELB** - Elastic Load Balancing
+  - Handles EC2s that we ask it to manage by giving traffic to different EC2s based on a set of rules
+- **AWS Auto-scaling**
+  - Set of rules for creating copies of our server
+  - Horizontal scaling
+    - Add lots of servers that are not that powerful
+    - Less expensive
+  - Vertical scaling
+    - Increase power to currently existing servers or add few powerful servers
+    - More expensive
+- **EBS** - Elastic Beanstalk
+  - Handles all of our elastic and auto-scaling for us
+
+### What are important steps for configuring an EC2?
+- Under the assumption that we have an AWS account already:
+  - Create an EC2 instance
+    - Choose an OS/kernel
+    - Choose a size for CPU and RAM
+    - Beg the AWS gods that you didn't forget something that'll cost you extra
+    - Run the instance
+  - Create login credentials
+  - Download the `credentials.pem` key
+  - SSH into the server
+    - `ssh -i /directory/to/credentials.pem ec2-user@ec2-[ip-address].[region].compute.amazonaws.com`
+
+### What are some Linux commands?
+- This list could be LONG, so I'm gonna go with "google it" for any that aren't included, but here are couple:
+  - `cd` - change directory
+  - `ls` - list
+  - `cat` - concatenate (show the contents of a file)
+  - `mkdir` - make directory
+  - `touch` - create a file if it doesn't exist otherwise update its timestamp (this comes in handy if a professor doesn't realize you know its true power)
+
+### What is a PEM file?
+- A PEM (or Privacy Enhanced Mail) file is a public key file for creating a trusted, secure connection between a client and a server
+
+### What is Jenkins?
+- Jenkins is software for continuous integration and continuous delivery for code development
+
+### What do we need to do to set up Jenkins?
+- Assuming we have all of the dependencies installed:
+  - Get the public key for Jenkins
+  - Add it to our trusted sources list (location varies based on kernel) if we want to use a repository build
+  - Update the repository
+  - Install Jenkins from the repository (or if you're feeling particularly adventurous, compile it from scratch)
+  - Go to `ec2-[ip-address].[region].compute.amazonaws.com:8080`
+  - Configure it the way we want it to operate
+  - Done
+
+### What is a job?
+- A job is a set of rules that Jenkins implements for continuous integration and/or delivery
+  - A job is started by hitting the `New Item` button from the Jenkins menu from our main server page
+
+### How do we set an environment variable with Jenkins?
+- By using the "This project is parameterized" option when setting up a new job
+
+### What is a webhook?
+- Simply put, a webhook is an automatic push of data from one data source to another as changes occur
+  - Also called a "web callback" or "HTTP push API"
+  - The basic concept is that when some event regarding the data in one source occurs, that data source sends a request to another API saying "hey! I have some new stuff! What do?" And then the corresponding endpoint responds accordingly with whether to push the data or not
+
+### How does Jenkins fit into DevOps?
+- Jenkins is the continuous integration and/or continuous delivery side of DevOps, and allows us to pipeline our code quickly through to whichever stage we want.
