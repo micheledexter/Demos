@@ -90,6 +90,119 @@ Each question will have answers in bullet point format, with possible nested ite
     - `display: inline-block;`
 
 ### What is the box model?
-- The components that make up an element, each element has a margin, border, padding, and the content itself, all of which together look like this:
-  > ![Box model](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
+- The components that make up an element, each element has a margin, border, padding, and the content itself, all put together they make up this model:
+  ![Box model](https://www.washington.edu/accesscomputing/webd2/student/unit3/images/boxmodel.gif)
 
+### What is flex?
+- [Flex (or flex-box)](https://www.w3schools.com/css/css3_flexbox.asp) is a layout module for creating responsive HTML layout structures without needing to use floats or positions
+
+### What is JavaScript's role in the browser?
+- JavaScript's role in the browser is to manipulate the DOM and facilitate information between the client and the server (side note: no more sources, I realized it's taking too long for what kind of time limit we're working with here...)
+
+### What is the DOM? Its structure?
+- The DOM (or Document Object Model) is a representation of the structure of an HTML document
+- Every DOM has a `document` object as the root object, everything (including the `<html>` element) is a child of this object
+- It is a tree structure, with each object being a node, whether it's a parent or a child
+  - If it's a child with no children, then it's called a "leaf"
+
+### How can we find HTML elements in JS?
+- There are several different ways, but a few of the most common methods of finding them are by using the following methods:
+  - `.getElementById(id);`
+  - `.getElementsByName(name);`
+  - `.getElementsByClassName(className);`
+  - These methods can be used on the `document` object, but can also be used on any other node in the DOM, although this is used significantly less often
+
+### Will find by ID always return a single node?
+- If we operate under the assumption that "find by ID" is referring to the `.getElementById()` method, then the answer is this: if we have at least one element with the ID we are searching for, then it will always return a single node, otherwise it will return `null`
+
+### How do I use JS to respond to events?
+- It can be done by setting up event listeners, or having event listeners on the elements themselves
+  - `node.onclick = [cb]`
+  - `node.addEventListener('click', [cb]);`
+
+### How can I send an HTTP request to a URL?
+- One of 3 ways:
+  - Using the `fetch()` command
+  - Using a third-party library
+  - Googling "[how to write an xml http request from scratch](http://lmgtfy.com/?q=how+to+write+an+xml+http+request+from+scratch)" (because let's be honest, it's not worth remembering)
+
+### How can we change an event's default functionality?
+- By using `event.preventDefault();` That's it.
+
+### How can we make a new element? Add it to the tree?
+- By using the `.createElement()` and adding them into the tree by using `.appendChild(ele);`
+
+### innerText vs innerHTML
+- `innerText` retrieves and sets the text between the opening and closing tags of an element
+  - This method is much more secure, but much less convenient
+- `innerHTML` retrieves and sets the html between the opening and closing tags of an element
+  - This method is much less secure, but much more convenient
+
+### What is CORS?
+- Cross-Origin Resource Sharing, and it apparently works like this:
+  ![Cross-Origin Resource Sharing diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/512px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png)
+
+### Why is CORS important?
+- Because it protects the user from making requests from one location to another if they do not have the proper header permissions as a result of cross-site scripting (XSS)
+
+### What do we need to do to accommodate CORS?
+- We need to have a CORS filter middleware in our server to check the options headers of incoming requests, and if they follow the rules outlined in the filter, then allow the request to be fulfilled, otherwise send back a CORS error.
+
+### What is Waterfall? Its defining characteristics?
+- Waterfall is a software development life cycle model
+- In the Waterfall model, we have a number of phases:
+  - **Requirements gathering and analysis**
+    - Go through and get a list of all of the requirements that the project needs
+    - All of the requirements are put into a document
+  - **System design**
+    - A database ERD is designed, every class, function, and property is outlined
+    - Everything, absolutely everything is designed in this phase, even tests can be designed in this phase for our different components if we wish
+  - **Implementation**
+    - This is the actual coding of the system design portion
+    - Because everything has been so meticulously planned out, this step should in theory go relatively quickly in comparison to other SDLC models
+  - **Integration and Testing**
+    - Making sure that the different components actually function
+    - If they function, they will be put into the final implementation
+  - **Deployment**
+    - Success! Everything works and the product is put into production
+    - This happens all at once, and cannot happen before every step before it
+  - **Maintenance**
+    - General maintenance as bugs occur (because a project is never over until it's dead)
+    - Maintenance is micro-Waterfalls to fix bugs
+
+### When is Waterfall good? When is it bad?
+- **Good**
+  - For small projects
+  - When the technology stack is static
+  - When requirements are unlikely to change
+  - The product needs to have as few bugs as humanly possible
+- **Bad** 
+  - For large products
+  - For changing technology
+  - When requirements are likely to change
+  - When the product needs to be out as fast as possible
+
+### Who uses Waterfall?
+- The federal government, NASA, and I would hope and pray that the banking industry does as well, because regardless of how large a project is in the banking industry, you don't want that final product to have bugs in it and accidentally have billions of dollars to go missing or have security be less than ideal because you wanted a product to get out faster instead of covering all of your bases.
+
+### What is Agile? What problems is it trying to solve?
+- Taken from the Agile Manifesto:
+  - Individuals and interactions over processes and tools
+  - Working software over comprehensive documentation
+  - Customer collaboration over contract negotiation
+  - Responding to change over following a plan
+  - _That is, while there is value in the items on the right, we value the items on the left more._
+
+### What is Scrum? What are some pieces of Scrum?
+- Scrum is (as best as I understand it) a superset of the Agile model, taking the Agile methodology, and adding in new roles and processes, some of which include:
+  - **A Scrum Master**
+    - The Scrum Master is generally a senior-level software engineer/developer and is the one that would be in charge of a scrum team
+  - **Scrum Board**
+    - A scrum board is where user stories are tracked, as well as product backlogs
+  - **User Stories**
+    - User stories are features which need to be implemented into the project
+    - Each user story has a score based on how long it will take to complete
+  - **Sprints**
+    - A sprint is a period of time typically between 1-3 weeks where a selection of user stories chosen by a Scrum Master should be completed
+  - **Velocity**
+    - A scrum team's velocity is based on how many user stories it can get through in a sprint
