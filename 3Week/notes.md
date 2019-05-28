@@ -1,7 +1,13 @@
 # Week 3 Study Questions
+These questions relate to the following topics:
+- [HTML, CSS, JavaScript and the DOM](#html-css-javascript-and-the-dom)
+- [Software Development Life Cycles (SDLCs)](#software-development-life-cycles-sdlcs)
+- [Development Operations (DevOps)](#development-operations-devops)
+- [The "Cloud", Linux and services](#the-cloud-linux-and-services)
+
 Each question will have answers in bullet point format, with possible nested items for more specific examples.
 
-## Questions
+## HTML, CSS, JavaScript and the DOM
 - [What is HTML? Is it a programming language?](#what-is-html-is-it-a-programming-language)
 - [What are some tags in HTML? What tags are required?](#what-are-some-tags-in-html-what-tags-are-required)
 - [What is the syntax for making a tag?](#what-is-the-syntax-for-making-a-tag)
@@ -28,30 +34,6 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is CORS?](#what-is-cors)
 - [Why is CORS important?](#why-is-cors-important)
 - [What do we need to accommodate CORS?](#what-do-we-need-to-accommodate-cors)
-- [What is Waterfall? Its defining characteristics?](#what-is-waterfall-its-defining-characteristics)
-- [When is Waterfall good? When is it bad?](#when-is-waterfall-good-when-is-it-bad)
-- [Who uses Waterfall?](#who-uses-waterfall)
-- [What is Agile? What problems is it trying to solve?](#what-is-agile-what-problems-is-it-trying-to-solve)
-- [What is Scrum? What are some pieces of Scrum?](#what-is-scrum-what-are-some-pieces-of-scrum)
-- [What are user stories? How do we value them?](#what-are-user-stories-how-do-we-value-them)
-- [What does "velocity" mean?](#what-does-velocity-mean)
-- [What is DevOps? What problem is it trying to solve](#what-is-devops-what-problem-is-it-trying-to-solve)
-- [What are some of the behaviors we develop to follow DevOps?](#what-are-some-of-the-behaviors-we-develop-to-follow-devops)
-- [What is a pipeline?](#what-is-a-pipeline)
-- [What is continuous integration?](#what-is-continuous-integration)
-- [What is continuous delivery?](#what-is-continuous-delivery)
-- [What is continuous development?](#what-is-continuous-development)
-- [What is the "cloud"? Cloud infrastructure?](#what-is-the-cloud-cloud-infrastructure)
-- [What are some of the services you know?](#what-are-some-of-the-services-you-know)
-- [What are some important steps for configuring an EC2?](#what-are-some-important-steps-for-configuring-an-ec2)
-- [What are some Linux commands?](#what-are-some-linux-commands)
-- [What is a PEM file?](#what-is-a-pem-file)
-- [What is Jenkins?](#what-is-jenkins)
-- [What do we need to do to set up Jenkins?](#what-do-we-need-to-do-to-set-up-jenkins)
-- [What is a job?](#what-is-a-job)
-- [How do we set up an environment variable with Jenkins?](#how-do-we-set-up-an-environment-variable-with-jenkins)
-- [What is a webhook?](#what-is-a-webhook)
-- [How does Jenkins fit into DevOps?](#how-does-jenkins-fit-into-devops)
 
 ### What is HTML? Is it a programming language?
 - HTML stands for Hypertext Markup Language
@@ -200,6 +182,15 @@ Each question will have answers in bullet point format, with possible nested ite
 ### What do we need to do to accommodate CORS?
 - We need to have a CORS filter middleware in our server to check the options headers of incoming requests, and if they follow the rules outlined in the filter, then allow the request to be fulfilled, otherwise send back a CORS error.
 
+## Software Development Life Cycles (SDLCs)
+- [What is Waterfall? Its defining characteristics?](#what-is-waterfall-its-defining-characteristics)
+- [When is Waterfall good? When is it bad?](#when-is-waterfall-good-when-is-it-bad)
+- [Who uses Waterfall?](#who-uses-waterfall)
+- [What is Agile? What problems is it trying to solve?](#what-is-agile-what-problems-is-it-trying-to-solve)
+- [What is Scrum? What are some pieces of Scrum?](#what-is-scrum-what-are-some-pieces-of-scrum)
+- [What are user stories? How do we value them?](#what-are-user-stories-how-do-we-value-them)
+- [What does "velocity" mean?](#what-does-velocity-mean)
+
 ### What is Waterfall? Its defining characteristics?
 - Waterfall is a software development life cycle model
 - In the Waterfall model, we have a number of phases:
@@ -270,6 +261,14 @@ Each question will have answers in bullet point format, with possible nested ite
 - Velocity is how many user stories a particular scrum team can accomplish in a sprint, and is calculated based on the sum of the values of the user stories over the course of a sprint
   - If I have user stories with the values 1, 2, 3, 5 and 7 for a sprint and we accomplished them all right on time, then our velocity for this sprint would be 1 + 2 + 3 + 5 + 7 = 18
 
+## Development Operations (DevOps)
+- [What is DevOps? What problem is it trying to solve](#what-is-devops-what-problem-is-it-trying-to-solve)
+- [What are some of the behaviors we develop to follow DevOps?](#what-are-some-of-the-behaviors-we-develop-to-follow-devops)
+- [What is a pipeline?](#what-is-a-pipeline)
+- [What is continuous integration?](#what-is-continuous-integration)
+- [What is continuous delivery?](#what-is-continuous-delivery)
+- [What is continuous development?](#what-is-continuous-development)
+
 ### What is DevOps? What problem is it trying to solve?
 - DevOps is short for "Development Operations" and was created to try to bridge the gap between development and operations, two different entities that need to have more communication and partnership between each other
 - Basically, this was the problem:
@@ -300,6 +299,19 @@ Each question will have answers in bullet point format, with possible nested ite
 ### What is continuous development?
 - Continuous development is continuous delivery but the UAT phase is automated so that basically once a change is made by the developer, it is pipelined all the way from development to production
   - Development -> SCM -> Tests -> Build -> UAT -> Production
+
+## The "Cloud", Linux and services
+- [What is the "cloud"? Cloud infrastructure?](#what-is-the-cloud-cloud-infrastructure)
+- [What are some of the services you know?](#what-are-some-of-the-services-you-know)
+- [What are some important steps for configuring an EC2?](#what-are-some-important-steps-for-configuring-an-ec2)
+- [What are some Linux commands?](#what-are-some-linux-commands)
+- [What is a PEM file?](#what-is-a-pem-file)
+- [What is Jenkins?](#what-is-jenkins)
+- [What do we need to do to set up Jenkins?](#what-do-we-need-to-do-to-set-up-jenkins)
+- [What is a job?](#what-is-a-job)
+- [How do we set up an environment variable with Jenkins?](#how-do-we-set-up-an-environment-variable-with-jenkins)
+- [What is a webhook?](#what-is-a-webhook)
+- [How does Jenkins fit into DevOps?](#how-does-jenkins-fit-into-devops)
 
 ### What is the "cloud"? Cloud infrastructure?
 - The "cloud" is a network of other peoples' computers
