@@ -174,7 +174,7 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What is CORS?
 - Cross-Origin Resource Sharing, and it apparently works like this:
-  > ![Cross-Origin Resource Sharing diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Flowchart_showing_Simple_and_Preflight_XHR.svg/512px-Flowchart_showing_Simple_and_Preflight_XHR.svg.png)
+  > ![Cross-Origin Resource Sharing diagram](https://cdn-images-1.medium.com/max/1600/1*BbwS29e5wg0CaH8sjxcLog.png)
 
 ### Why is CORS important?
 - Because it protects the user from making requests from one location to another if they do not have the proper header permissions as a result of cross-site scripting (XSS)
