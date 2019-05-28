@@ -339,7 +339,7 @@ Each question will have answers in bullet point format, with possible nested ite
   - Vertical scaling
     - Increase power to currently existing servers or add few powerful servers
     - More expensive
-- **EBS** - Elastic Beanstalk
+- **AWS Elastic Beanstalk**
   - Handles all of our elastic and auto-scaling for us
 
 ### What are important steps for configuring an EC2?
@@ -370,8 +370,9 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What do we need to do to set up Jenkins?
 - Assuming we have all of the dependencies installed:
-  - Get the public key for Jenkins
+  - Get the public key for connecting to your EC2 instance
   - Add it to our trusted sources list (location varies based on kernel) if we want to use a repository build
+  - Connect to the EC2
   - Update the repository
   - Install Jenkins from the repository (or if you're feeling particularly adventurous, compile it from scratch)
   - Go to `ec2-[ip-address].[region].compute.amazonaws.com:8080`
