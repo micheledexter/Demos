@@ -33,7 +33,7 @@ Each question will have answers in bullet point format, with possible nested ite
 - [innerText vs innerHTML](#innertext-vs-innerhtml)
 - [What is CORS?](#what-is-cors)
 - [Why is CORS important?](#why-is-cors-important)
-- [What do we need to accommodate CORS?](#what-do-we-need-to-accommodate-cors)
+- [What do we need to do to accommodate CORS?](#what-do-we-need-to-do-to-accommodate-cors)
 
 ### What is HTML? Is it a programming language?
 - HTML stands for Hypertext Markup Language
@@ -303,13 +303,13 @@ Each question will have answers in bullet point format, with possible nested ite
 ## The "Cloud", Linux and services
 - [What is the "cloud"? Cloud infrastructure?](#what-is-the-cloud-cloud-infrastructure)
 - [What are some of the services you know?](#what-are-some-of-the-services-you-know)
-- [What are some important steps for configuring an EC2?](#what-are-some-important-steps-for-configuring-an-ec2)
+- [What are important steps for configuring an EC2?](#what-are-important-steps-for-configuring-an-ec2)
 - [What are some Linux commands?](#what-are-some-linux-commands)
 - [What is a PEM file?](#what-is-a-pem-file)
 - [What is Jenkins?](#what-is-jenkins)
 - [What do we need to do to set up Jenkins?](#what-do-we-need-to-do-to-set-up-jenkins)
 - [What is a job?](#what-is-a-job)
-- [How do we set up an environment variable with Jenkins?](#how-do-we-set-up-an-environment-variable-with-jenkins)
+- [How do we set an environment variable with Jenkins?](#how-do-we-set-an-environment-variable-with-jenkins)
 - [What is a webhook?](#what-is-a-webhook)
 - [How does Jenkins fit into DevOps?](#how-does-jenkins-fit-into-devops)
 
