@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { artistRouter } from './routers/artist.router';
 import { userRouter } from './routers/user.router';
 import { sessionMiddleware } from './middleware/session.middleware';
+import { corsFilter } from './middleware/corse-filter.middleware';
 
 const app = express();
 
@@ -16,6 +17,7 @@ const app = express();
 
 // 'next' is an optional parameter that allows us to move past the
 // current part
+app.use(corsFilter);
 app.use(loggingMiddleware);
 app.use(bodyParser.json());
 app.use(sessionMiddleware);
@@ -31,6 +33,6 @@ app.get('/', (req, res) => {
 app.use('/artists', artistRouter);
 app.use('/users', userRouter);
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log('App has started...');
 });
