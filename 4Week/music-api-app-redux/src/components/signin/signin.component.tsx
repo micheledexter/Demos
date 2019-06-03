@@ -1,4 +1,9 @@
 import React from 'react';
+import { User } from '../../assets/models/user';
+import { RouteComponentProps } from 'react-router';
+import { connect } from 'react-redux';
+import { IState } from '../../reducers';
+import { History } from 'history';
 
 interface iSignInState {
   username: string;
@@ -6,8 +11,14 @@ interface iSignInState {
   errorMessage: string
 }
 
-export class SignInComponent extends React.Component<any, iSignInState> { // first is props, second is state
-  constructor(props: any) {
+interface ISignInProps extends RouteComponentProps{
+  currentUser: User,
+  errorMessage: string,
+  login: (username: string, password: string)=>void
+}
+
+export class SignInComponent extends React.Component<ISignInProps, iSignInState> { // first is props, second is state
+  constructor(props: ISignInProps) {
     super(props);
     this.state = {
       username: '',
@@ -45,6 +56,7 @@ export class SignInComponent extends React.Component<any, iSignInState> { // fir
       method: 'POST',
       body: JSON.stringify(reqBody)
     });
+    let history: History = this.props.history
     console.log(response);
   }
 
@@ -69,3 +81,19 @@ export class SignInComponent extends React.Component<any, iSignInState> { // fir
     )
   }
 }
+
+// this is the state that this component will care about and have access to
+const mapStateToProps = (state: IState) => {
+  return {
+    currentUser: state.login.currentUser,
+    errorMessage: state.login.errorMessage
+  }
+}
+
+// This is the action object that will be available to the component
+const mapDispatchToProps = {
+  login: login
+}
+
+// this will make a higher order component
+export default connect(mapStateToProps, mapDispatchToProps)(SignInComponent);
