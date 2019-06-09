@@ -1,9 +1,12 @@
 # Week 5 Study Questions
+These questions relate to the following topics:
 - [Java Basics, Variables and Classes](#java-basics-variables-and-classes)
 - [Access Modifiers, Interfaces, Abstract Classes and Strings](#access-modifiers-interfaces-abstract-classes-and-strings)
 - [Object Super Class, Exceptions, and Reflections](#object-super-class,exceptions-and-reflections)
 - [Garbage Collection, Collections and Comparing](#garbage-collection-collections-and-comparing)
 - [Threads, Packaging and Testing](#threads-packaging-and-testing)
+
+Each question will have answers in bullet point format, with possible nested items for more specific examples.
 
 ## Java Basics, Variables and Classes
 - [Java Basics](#java-basics)
@@ -11,7 +14,7 @@
 - [Classes](#classes)
 
 ### Java Basics
-- [What is Java? Is it complied? Is it high level?](#what-is-java-is-it-compiled-is-it-high-level)
+- [What is Java? Is it compiled? Is it high level?](#what-is-java-is-it-compiled-is-it-high-level)
 - [Why do we use Java?](#why-do-we-use-java)
 - [What are the 4 pillars? Examples of each in Java](#what-are-the-4-pillars-examples-of-each-in-java)
 - [Is Java functional? Is it OOP?](#is-java-functional-is-it-oop)
@@ -19,17 +22,67 @@
 - [JVM VS JRE VS JDK](jvm-vs-jre-vs-jdk)
 
 
-#### What is Java? Is it complied? Is it high level?
+#### What is Java? Is it compiled? Is it high level?
+- Java is a high-level compiled programming language that is incredibly portable
+  - It is compiled into bytecode, which is able to be run on any device that has a Java Runtime Environment
 
 #### Why do we use Java?
+- It lets us have multithreading and static typing
+- It's the most used language in business
+- It has a long history, and thanks to that history, there are tons of libraries and there is documentation for virtually everything from tools to how to deal with errors and problems in code
 
 #### What are the 4 pillars? Examples of each in Java
+- Abstraction
+  - Interfaces are a perfect example, an interface is a contract stating that a certain set of methods will be in any implementation, and if the interface is implemented, it doesn't matter _how_ they are implemented, they will be implemented
+- Polymorphism
+  - Method overriding and overloading; with overriding a previously defined method from an extended class is overridden by a newly defined method, and with overloading, a method or constructor can have numerous different call signatures
+- Inheritance
+  - A class can extend another class or an interface can extend another interface to have all of the methods and attributes of parent and add on additional methods and/or fields as well
+- Encapsulation
+  - Access modifiers allow us to prevent data from being accessed and modified in ways they shouldn't be, so if we want to modify a variable in a class, we may need to use `obj.setVar(newVal);` instead of `obj.val = newVal;`
 
 #### Is Java functional? Is it OOP?
+- If the question is whether or not Java is a functional language, then the answer is no: Java is a purely OOP language
+  - Everything in Java must be in a class
+  - Functions cannot be parameters
+  - Functions cannot be return values
 
 #### Is Java pass by value or reference?
+- Java is "pass by value", which is a stupid term, because it's deceptive. Allow me to explain...
+  - It's "pass by value" because it copies the **_PRIMITIVE_** values
+  - It **_DOES NOT_** pass the pass the values of anything that's not a primitive value _(with weird String exceptions)_
+    - Consider the following code:
+    ```java
+    public class TestObject {
+
+      private int test;
+
+      public TestObject(int test) {
+        this.test = test;
+      }
+
+      public int getTest() {
+        return this.test;
+      }
+
+      public void setTest(int test) {
+        this.test = test;
+      }
+    }
+
+    public class TestLauncher {
+
+      private static void main(String[] args) {
+
+        TestObject obj1 = new TestObject(10); // obj1 is set to `10`
+        TestObject obj2 = obj1; // obj2 references obj1
+        obj2.setTest(20); // change obj2 to 20
+        System.out.println(obj1.getTest()); // This will return 20 since obj2 is only a reference to the same thing
+      }
+    }
 
 #### JVM VS JRE VS JDK
+- 
 
 ### Variables
 - [How do I declare a variable?](#how-do-i-declare-a-variable)
