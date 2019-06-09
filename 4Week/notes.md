@@ -1,4 +1,4 @@
-# Week 3 Study Questions
+# Week 4 Study Questions
 These questions relate to the following topics:
 - [React, ReactDOM, and their structures](#react-reactdom-and-their-structures)
 - [JSX, components, props, and the component lifecycle](#jsx-components-props-and-the-component-lifecycle)
