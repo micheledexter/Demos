@@ -162,18 +162,25 @@ Each question will have answers in bullet point format, with possible nested ite
 #### What are access modifiers? How many do I have and what do they do?
 - Access modifiers are keywords that define what kind of access different parts of our code should allow:
 
-| Modifier | Class | Package | Subclass | Everywhere |
-| --- | --- | --- | --- | --- |
-| Public | Yes | Yes | Yes | Yes |
-| Protected | Yes | Yes | Yes | No |
-| Default | Yes | Yes | No | No |
-| Private | Yes | No | No | No |
+  | Modifier | Class | Package | Subclass | Everywhere |
+  | --- | --- | --- | --- | --- |
+  | Public | Yes | Yes | Yes | Yes |
+  | Protected | Yes | Yes | Yes | No |
+  | Default | Yes | Yes | No | No |
+  | Private | Yes | No | No | No |
 
 #### What does the final keyword do? Where can I use it?
+- It depends on where it's being used:
+  - If it's being used with a variable, it prevents any further changes to the variable
+  - If it's being used with a method, it prevents the method from being overridden
+  - If it's being used with a class, it prevents it from being inherited
 
 #### What does the static keyword do?
+- It makes a variable or method a member of the class rather than a member of an instance
+  - Static variables and methods are not instantiated with the creation of each new object, and are accessible from the class name
 
 #### Can static methods access non static methods or variables
+- No because a static method is part of the class and is not part of any one instance
 
 ### Interfaces and Abstract Classes
 - [How do interfaces and abstract classes differ? How are they the same?](#how-do-interfaces-and-abstract-classes-differ-how-are-they-the-same)
@@ -183,14 +190,33 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What are functional interfaces? Marker interfaces?](#what-are-functional-interfaces-marker-interfaces)
 
 #### How do interfaces and abstract classes differ? How are they the same?
+  | | Interfaces | Abstract Classes |
+  | --- | --- | --- |
+  | Instantiation | Cannot be instantiated | Can't be instantiated (mostly) |
+  | Use | Implemented by classes | Extended from classes |
+  | Quantity | Up to 256 | Only 1 |
+  | Uses abstract methods | Yes | Yes |
+  | Can have concrete methods | No | Yes |
+  | Allowed variables | public static final | Any |
+  | Access modifiers | public | Any |
 
 #### Why use interfaces or abstract classes?
+- Both are used in abstraction
+- Interfaces are great for creating a set of methods for accessing something like databases with a common set of methods regardless of which implementation we are using
+- Abstract classes are better for creating development tools
 
 #### How do I use an interface on a class?
+- `public class MyClass implements Interfaceable {}`
+- Create override methods in the class for any methods from the implemented interface
 
 #### Can I have more than one interface on a class?
+- Yes, a class can implement up to 256 interfaces
 
 #### What are functional interfaces? Marker interfaces?
+- Functional interfaces are ones that add functionality to a class
+  - Like the `Collection` interface, for example
+- Marker interfaces are ones that simply mark something as being allowed to do something or having a certain quality
+  - Like the `Cloneable` interface
 
 ### Strings
 - [What are Strings? Are they Objects?](#what-are-strings-are-they-objects)
@@ -199,12 +225,24 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do StringBuilder and StringBuffer compare to String? To each other?](#how-do-stringbuilder-and-stringbuffer-compare-to-string-to-each-other)
 
 #### What are Strings? Are they Objects?
+- Strings are objects with some very strange qualities
+  - Strings have the String Pool, for example, which is all sorts of strange
 
 #### How does the String Pool work?
+- The String Pool works in mysterious ways... But basically, GENERALLY, when a string is created, it goes into the pool
+  - UNLESS it's already been created, in which case the variable points to the existing string in the pool
+    - But if the string is called with `new String();`, then it doesn't go into the pool
+      - Although it can go into the pool by using the `.intern()` method
+        - That means it will follow the string pool rules and see if it's already in the pool again
+- It is a wonderfully confusing process that means if we are comparing strings, ALWAYS use `.equals()`
 
 #### Do I use == or .equals with Strings? Why?
+- `.equals()` because even though there's a fairly good chance it will resolve correctly, there's still a small chance that it will resolve incorrectly when using `==`
 
 #### How do StringBuilder and StringBuffer compare to String? To each other?
+- StringBuilder and StringBuffer are both ways for us to create strings without constantly creating new strings when we have to concatenate multiple strings together
+  - Concatenating strings actually results in a new string for each concatenation
+- StringBuilder is multithreaded, and StringBuffer is not, but it's also outdated and shouldn't be used anymore.
 
 ## Object Super Class, Exceptions, and Reflections
 - [Object Super Class](#object-super-class)
@@ -218,12 +256,22 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is the relationship between .hashCode and .equals?](#what-is-the-relationship-between-hashcode-and-equals)
 
 #### What is the Object super class?
+- The Object super class is the class that is parent to every other object in some way or another
+  - If a class doesn't extend to another class, then it by default extends the Object super class
 
 #### What are some methods on the Object super class?
+  - `.hashCode()` - provides a sufficiently unique number based on the object
+  - `.equals(Object o)` - checks whether or one object is equal to another
+    - By default, this is set to check the reference values of two objects rather than the values themselves
+  - `toString()` - outputs a string representing the object
+    - By default, this is the object's reference value
 
 #### What is method overriding? Overloading?
+- Method overriding occurs when extending or implementing a class or interface respectively and a method either already exists or needs to be implemented
+  - We do not necessarily need to mark it with the `@Override` annotation, although in my own personal opinion I think it helps to have a marker there to show which methods are not native to the class itself
 
 #### What is the relationship between .hashCode and .equals?
+- `.hashCode()` is a sufficiently unique number generated based on the object, and if `.equals()` evaluates to `true` between two objects, their `.hashCode()` should also evaluate to being the same value
 
 ### Exceptions
 - [What are checked exceptions? Unchecked exceptions? Errors?](#what-are-checked-exceptions-unchecked-exceptions-errors)
