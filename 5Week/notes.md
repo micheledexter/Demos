@@ -161,12 +161,12 @@ Each question will have answers in bullet point format, with possible nested ite
 
 #### What are access modifiers? How many do I have and what do they do?
 - Access modifiers are keywords that define what kind of access different parts of our code should allow:
-  | Modifier  | Class | Package | Subclass | Everywhere |
-  | --------- | ----- | ------- | -------- | ---------- |
-  | Public    | Yes   | Yes     | Yes      | Yes        |
-  | Protected | Yes   | Yes     | Yes      | No         |
-  | Default   | Yes   | Yes     | No       | No         |
-  | Private   | Yes   | No      | No       | No         |
+| Modifier | Class | Package | Subclass | Everywhere |
+| --- | --- | --- | --- | --- |
+| Public | Yes | Yes | Yes | Yes |
+| Protected | Yes | Yes | Yes | No |
+| Default | Yes | Yes | No | No |
+| Private | Yes | No | No | No |
 
 #### What does the final keyword do? Where can I use it?
 
