@@ -18,11 +18,17 @@
 - [Is Java pass by value or reference?](#is-java-pass-by-value-or-reference)
 - [JVM VS JRE VS JDK](jvm-vs-jre-vs-jdk)
 
+
 #### What is Java? Is it complied? Is it high level?
+
 #### Why do we use Java?
+
 #### What are the 4 pillars? Examples of each in Java
+
 #### Is Java functional? Is it OOP?
+
 #### Is Java pass by value or reference?
+
 #### JVM VS JRE VS JDK
 
 ### Variables
@@ -32,8 +38,11 @@
 - [What is Null?](#what-is-Null)
 
 #### How do I declare a variable?
+
 #### What kinds of variables can I make?
+
 #### What are the scopes of a variable?
+
 #### What is Null?
 
 ### Classes
@@ -43,8 +52,11 @@
 - [Can I inherit more than one class?](#can-i-inherit-more-than-one-class)
 
 #### What are the pieces of a class in Java?
+
 #### What is an object's relation to a class?
+
 #### How do I inherit a class in Java?
+
 #### Can I inherit more than one class?
 
 ## Access Modifiers, Interfaces, Abstract Classes and Strings
@@ -59,8 +71,11 @@
 - [Can static methods access non static methods or variables](#can-static-methods-access-non-static-methods-or-variables)
 
 #### What are access modifiers? How many do I have and what do they do?
+
 #### What does the final keyword do? Where can I use it?
+
 #### What does the static keyword do?
+
 #### Can static methods access non static methods or variables
 
 ### Interfaces and Abstract Classes
@@ -71,21 +86,28 @@
 - [What are functional interfaces? Marker interfaces?](#what-are-functional-interfaces-marker-interfaces)
 
 #### How do interfaces and abstract classes differ? How are they the same?
+
 #### Why use interfaces or abstract classes?
+
 #### How do I use an interface on a class?
+
 #### Can I have more than one interface on a class?
+
 #### What are functional interfaces? Marker interfaces?
 
 ### Strings
-What are Strings? Are they Objects?
-How does the String Pool work?
-Do I use == or .equals with Strings? Why?
-How do StringBuilder and StringBuffer compare to String? to each other?
+- [What are Strings? Are they Objects?](#what-are-strings-are-they-objects)
+- [How does the String Pool work?](#how-does-the-string-pool-work)
+- [Do I use == or .equals with Strings? Why?](#do-i-use--or-equals-with-strings-why)
+- [How do StringBuilder and StringBuffer compare to String? To each other?](#how-do-stringbuilder-and-stringbuffer-compare-to-string-to-each-other)
 
 #### What are Strings? Are they Objects?
+
 #### How does the String Pool work?
+
 #### Do I use == or .equals with Strings? Why?
-#### How do StringBuilder and StringBuffer compare to String? to each other?
+
+#### How do StringBuilder and StringBuffer compare to String? To each other?
 
 ## Object Super Class, Exceptions, and Reflections
 - [Object Super Class](#object-super-class)
@@ -93,36 +115,45 @@ How do StringBuilder and StringBuffer compare to String? to each other?
 - [Reflections](#reflections)
 
 ### Object Super Class
-What is the Object super Class?
-What are some methods on the Object super class?
-What is method overriding? Overloading?
-What is the relationship between .hashCode and .equals?
+- [What is the Object super class?](#what-is-the-object-super-class)
+- [What are some methods on the Object super class?](#what-are-some-methods-on-the-object-super-class)
+- [What is method overriding? Overloading?](#what-is-method-overriding-overloading)
+- [What is the relationship between .hashCode and .equals?](#what-is-the-relationship-between-hashcode-and-equals)
 
-#### What is the Object super Class?
+#### What is the Object super class?
+
 #### What are some methods on the Object super class?
+
 #### What is method overriding? Overloading?
+
 #### What is the relationship between .hashCode and .equals?
 
 ### Exceptions
-What are checked exceptions? Unchecked exceptions? Errors?
-What is the top level class of exceptions?
-How do I deal with exceptions?
-What is finally? How does it compare to final? Finalize?
+- [What are checked exceptions? Unchecked exceptions? Errors?](#what-are-checked-exceptions-unchecked-exceptions-errors)
+- [What is the top level class of exceptions?](#what-is-the-top-level-class-of-exceptions)
+- [How do I deal with exceptions?](#how-do-i-deal-with-exceptions)
+- [What is finally? How does it compare to final? Finalize?](#what-is-finally-how-does-it-compare-to-final-finalize)
 
 #### What are checked exceptions? Unchecked exceptions? Errors?
+
 #### What is the top level class of exceptions?
+
 #### How do I deal with exceptions?
+
 #### What is finally? How does it compare to final? Finalize?
 
 ### Reflections
-What are generics? Why use them?
-What are Wrapper classes? Autoboxing? Autounboxing?
-What is reflections? 
-What can we do with reflections? Who uses it?
+- [What are generics? Why use them?](#what-are-generics-why-use-them)
+- [What are wrapper classes? Autoboxing? Autounboxing?](#what-are-wrapper-classes-autoboxing-autounboxing)
+- [What is reflections?](#what-is-reflections)
+- [What can we do with reflections? Who uses it?](#what-can-we-do-with-reflections-who-uses-it)
 
 #### What are generics? Why use them?
-#### What are Wrapper classes? Autoboxing? Autounboxing?
-#### What is reflections? 
+
+#### What are wrapper classes? Autoboxing? Autounboxing?
+
+#### What is reflections?
+
 #### What can we do with reflections? Who uses it?
 
 ## Garbage Collection, Collections and Comparing
@@ -131,36 +162,45 @@ What can we do with reflections? Who uses it?
 - [Comparing](#comparing)
 
 ### Garbage Collection
-How does garbage collection work in Java?
-What does finalize do?
-Can I force garbage collection?
+- [How does garbage collection work in Java?](#how-does-garbage-collection-work-in-java)
+- [What does finalize do?](#what-does-finalize-do)
+- [Can I force garbage collection?](#can-i-force-garbage-collection)
 
 #### How does garbage collection work in Java?
+
 #### What does finalize do?
+
 #### Can I force garbage collection?
 
 ### Collections
-What are all the pieces of the collections framework?
-Compare and contrast Sets, Queues, Lists, and Maps
-Hashmap v Hashtable, HashSet v TreeSet, Set v List
-Collection v Collections
-How does Iterable fit in?
+- [What are all of the pieces of the Collections framework?](#what-are-all-of-the-pieces-of-the-collections-framework)
+- [Compare and contrast Sets, Queues, Lists, and Maps](#compare-and-contrast-sets-queues-lists-and-maps)
+- [Hashmap v Hashtable, HashSet v TreeSet, Set v List](#hashmap-v-hashtable-hashset-v-treeset-set-v-list)
+- [Collection v Collections](#collection-v-collections)
+- [How does Iterable fit in?](#how-does-Iterable-fit-in)
 
-#### What are all the pieces of the collections framework?
+#### What are all of the pieces of the Collections framework?
+
 #### Compare and contrast Sets, Queues, Lists, and Maps
+
 #### Hashmap v Hashtable, HashSet v TreeSet, Set v List
+
 #### Collection v Collections
+
 #### How does Iterable fit in?
 
 ### Comparing
-How do I compare two objects in Java?
-Comparable v Comparator?
-Lambda functions: What are they? When can I use them?
-How do they work in the background?
+- [How do I compare two objects in Java?](#how-do-i-compare-two-objects-in-java)
+- [Comparable v Comparator?](#comparable-v-comparator)
+- [Lambda functions: What are they? When can I use them?](#lambda-functions-what-are-they-when-can-i-use-them)
+- [How do they work in the background?](#how-do-they-work-in-the-background)
 
 #### How do I compare two objects in Java?
+
 #### Comparable v Comparator?
+
 #### Lambda functions: What are they? When can I use them?
+
 #### How do they work in the background?
 
 ## Threads, Packaging and Testing
@@ -169,36 +209,46 @@ How do they work in the background?
 - [Testing](#testing)
 
 ### Threads
-What is multithreading? Why do we want to do it?
-How can I make a thread in Java? Which way should I?
-What are thread states?
-What are some thread methods? .join? .isAlive?
-What are some potential problems I can get with multithreading?
+- [What is multithreading? Why do we want to do it?](#what-is-multithreading-why-do-we-want-to-do-it)
+- [How can I make a thread in Java? Which way should I?](#how-can-i-make-a-thread-in-java-which-way-should-i)
+- [What are thread states?](#what-are-thread-states)
+- [What are some thread methods? .join? .isAlive?](#what-are-some-thread-methods-join-isalive)
+- [What are some potential problems I can get with multithreading?](#what-are-some-potential-problems-i-can-get-multithreading)
 
 #### What is multithreading? Why do we want to do it?
+
 #### How can I make a thread in Java? Which way should I?
+
 #### What are thread states?
+
 #### What are some thread methods? .join? .isAlive?
+
 #### What are some potential problems I can get with multithreading?
 
 ### Packaging
-What is maven? 
-What is a POM?
-How do I get dependencies?
-What are the build lifecycle stages?
+- [What is maven?](#what-is-maven)
+- [What is a POM?](#what-is-a-pom)
+- [How do I get dependencies?](#how-do-i-get-dependencies)
+- [What are the build lifecycle stages?](#what-are-the-build-lifecycle-stages)
 
-#### What is maven? 
+#### What is maven?
+
 #### What is a POM?
+
 #### How do I get dependencies?
+
 #### What are the build lifecycle stages?
 
 ### Testing
-What is JUnit? What testing tools does it provide us?
-What are some annotations of JUnit?
-What are the Hamcrest matchers?
-Why use them and assertThat?
+- [What is JUnit? What testing tools does it provide us?](#what-is-junit-what-testing-tools-does-it-provide-us)
+- [What are some annotations of JUnit?](#what-are-some-annotations-of-junit)
+- [What are the Hamcrest matchers?](#what-are-the-hamcrest-matchers)
+- [Why use them and assertThat?](#why-use-them-and-assertthat)
 
 #### What is JUnit? What testing tools does it provide us?
+
 #### What are some annotations of JUnit?
+
 #### What are the Hamcrest matchers?
+
 #### Why use them and assertThat?
