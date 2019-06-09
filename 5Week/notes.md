@@ -81,9 +81,15 @@ Each question will have answers in bullet point format, with possible nested ite
       }
     }
     ```
+    - And that's why "pass by value" is a stupid, misleading description
 
 #### JVM VS JRE VS JDK
-- 
+- JVM: Java Virtual Machine
+  - Executes bytecode and does underlying housekeeping processes
+- JRE: Java Runtime Environment
+  - Copy of the JVM and other libraries, code and configuration files that actually run the bytecode
+- JDK: Java Development Kit
+  - Has the JRE as well as tools for writing code and compiling code into bytecode
 
 ### Variables
 - [How do I declare a variable?](#how-do-i-declare-a-variable)
@@ -92,12 +98,29 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is Null?](#what-is-Null)
 
 #### How do I declare a variable?
+- By using an optional access modifier (or it defaults to `default`), adding static if it's static, adding final if it's final, the type of variable it will be, then a name, followed by an assignment if you want to (must for final)
+  - `int x;`
+  - `int x = 7`
+  - `private int x;`
+  - `private int x = 7`
+  - `private static int x;`
+  - `private static int x = 7`
+  - `public static final int X = 7;`
 
 #### What kinds of variables can I make?
+- Instance and class
+  - Instance are part of an object
+  - Class variables are static and are tied to a class
 
 #### What are the scopes of a variable?
+- Member (class), method, loop, and local(bracket)
+  - Member -- or class -- variables are accessible anywhere within a class
+  - Method are accessible within a method
+  - Loop are accessible within a loop
+  - Local are accessible within a set of curly braces
 
 #### What is Null?
+- A special literal that can be of any reference type
 
 ### Classes
 - [What are the pieces of a class in Java?](#what-are-the-pieces-of-a-class-in-java)
@@ -106,12 +129,24 @@ Each question will have answers in bullet point format, with possible nested ite
 - [Can I inherit more than one class?](#can-i-inherit-more-than-one-class)
 
 #### What are the pieces of a class in Java?
+- Fields
+  - The values of a Class
+- Constructors
+  - How an is built
+- Methods
+  - How the class and objects interact
 
 #### What is an object's relation to a class?
+- An object in an instance of a class
+  - A class can basically be a blueprint for an object, so if it has constructors, any number of objects can be instantiated from it
 
 #### How do I inherit a class in Java?
+- By extending it using the keyword `extends`
+  - `class ChildClass extends ParentClass {}`
+- Each class can only inherit from at most 1 other class
 
 #### Can I inherit more than one class?
+- No
 
 ## Access Modifiers, Interfaces, Abstract Classes and Strings
 - [Access Modifiers](#access-modifiers)
@@ -125,6 +160,13 @@ Each question will have answers in bullet point format, with possible nested ite
 - [Can static methods access non static methods or variables](#can-static-methods-access-non-static-methods-or-variables)
 
 #### What are access modifiers? How many do I have and what do they do?
+- Access modifiers are keywords that define what kind of access different parts of our code should allow:
+  | Modifier | Class | Package | Subclass | Everywhere |
+  | --- | --- | --- | --- | --- |
+  | Public | Yes | Yes | Yes | Yes |
+  | Protected | Yes | Yes | Yes | No |
+  | Default | Yes | Yes | No | No |
+  | Private | Yes | No | No | No |
 
 #### What does the final keyword do? Where can I use it?
 
