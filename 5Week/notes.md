@@ -280,12 +280,34 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is finally? How does it compare to final? Finalize?](#what-is-finally-how-does-it-compare-to-final-finalize)
 
 #### What are checked exceptions? Unchecked exceptions? Errors?
+- Checked exceptions are exceptions that must be handled before the program can be compiled
+  - Generally any kind of database connection will throw a checked exception somewhere that must be handles (for in case something goes wrong)
+  - `IOException`, `SQLException`, `InterruptedException` (all extend) `Exception`
+- Unchecked exceptions are exceptions that occur during runtime and are usually due to mistakes that the programmer made and generally don't need to be handled
+  - Trying to select more items than are in an array
+  - `ArithmeticException`, `NullPointerException`, `IndexOutOfBoundsException` (all extend) `RuntimeException`
+- Errors are things that should **_NOT BE HANDLED_** because trying to handle them will generally make things way worse than they currently are
+  - `StackOverflowError`, `OutOfMemoryError`, `UnknownError` (all extend) `VirtualMachineError`
+  - `ThreadDeath` - That's it. Not even "error" in there. That's the only reason I wanted to include it.
 
 #### What is the top level class of exceptions?
+- `Exception`
 
 #### How do I deal with exceptions?
+- Using `try`/`catch`/`finally` blocks
+  - There needs to be either a `catch` for a `finally` or there can be both, but there needs to be at least one of them
+    ```java
+    try {
+      ExClassThrower obj = new ExClassThrower();
+    } catch(CheckedException e) {
+      e.printStackTrace();
+    }
+    ```
 
 #### What is finally? How does it compare to final? Finalize?
+- `finally` is the last part of a `try`/`catch`/`finally` block, and will run regardless of what happens in `try` or `catch`
+- `final` is just an access modifier and has nothing to do with `finally`
+- `.finalize()` is just an internal method used by the garbage collector, and also has nothing to do with `finally`
 
 ### Reflections
 - [What are generics? Why use them?](#what-are-generics-why-use-them)
@@ -294,12 +316,23 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What can we do with reflections? Who uses it?](#what-can-we-do-with-reflections-who-uses-it)
 
 #### What are generics? Why use them?
+- Generics are used between `<` and `>` to represent a generic class type so that we can program using any class instead of creating different implementations of code for every conceivable class type
+  - `public class MyGeneric<T> {}` could be instantiated with `MyGeneric<Integer> myObj = new MyGeneric<>();`
+    - In Java 8 we do not need to type `Integer` (or whatever class name) in the second set because it's implied that they are the same.
 
 #### What are wrapper classes? Autoboxing? Autounboxing?
+- Wrapper classes are used for primitive types, and give us some extra methods as well as allow us to use primitives with generics (such as the example above) by using autoboxing and autounboxing, both of which are handled by the JVM
+- Autoboxing is when a primitive value is automatically turned into its class counterpart
+  - `int` becomes `Integer`
+- Autounboxing is when a class becomes its primitive counterpart
+  - `Integer` becomes `int`
 
 #### What is reflections?
+- Reflections is magic in Java that allows the program to look at itself and alter itself while running
+  - This still blows my mind
 
 #### What can we do with reflections? Who uses it?
+- We can use reflections in conjunction with annotations mark which code should be tested, or use inversion of control to mark what parts of our program should do what for frameworks like Spring
 
 ## Garbage Collection, Collections and Comparing
 - [Garbage Collection](#garbage-collection)
@@ -312,10 +345,16 @@ Each question will have answers in bullet point format, with possible nested ite
 - [Can I force garbage collection?](#can-i-force-garbage-collection)
 
 #### How does garbage collection work in Java?
+- It's automatically handled by the JVM
+- It automatically runs and collects objects that no longer have references to any significant resource connected to the program
 
 #### What does finalize do?
+- It is the last method called before the garbage collector collects the object in question
 
 #### Can I force garbage collection?
+- Yep, there are two ways we can do it, but as a general rule shouldn't:
+  - `System.gc();`
+  - `Runtime.getRuntime().gc();`
 
 ### Collections
 - [What are all of the pieces of the Collections framework?](#what-are-all-of-the-pieces-of-the-collections-framework)
@@ -325,6 +364,60 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How does Iterable fit in?](#how-does-Iterable-fit-in)
 
 #### What are all of the pieces of the Collections framework?
+- _\*le sigh\*_ Fields:
+  - EMPTY_LIST
+  - EMPTY_SET
+  - EMPTY_MAP
+- Methods: _(figure them out)_
+  - addAll
+  - addLifoQueue
+  - binarySearch
+  - checkedCollection
+  - checkedList
+  - checkedMap
+  - checkedSet
+  - checkedSortedMap
+  - checkedSortedSet
+  - copy
+  - disjoint
+  - emptyEnumeration
+  - emptyIterator
+  - emptyList
+  - emptyListIterator
+  - emptyMap
+  - emptySet
+  - enumeration
+  - fill
+  - frequency
+  - indexOfSubList
+  - lastIndexOfSubList
+  - list
+  - max
+  - min
+  - nCopies
+  - newSetFromMap
+  - replaceAll
+  - reverse
+  - reverseOrder
+  - rotate
+  - shuffle
+  - singleton
+  - singletonList
+  - singletonMap
+  - sort
+  - swap
+  - synchronizedCollection
+  - synchronizedList
+  - synchronizedMap
+  - synchronizedSet
+  - synchronizedSortedMap
+  - synchronizedSortedSet
+  - unmodifiableCollection
+  - unmodifiableList
+  - unmodifiableMap
+  - unmodifiableSet
+  - unmodifiableSortedMap
+  - unmodifiableSortedSet
 
 #### Compare and contrast Sets, Queues, Lists, and Maps
 
