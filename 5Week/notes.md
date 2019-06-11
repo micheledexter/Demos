@@ -359,7 +359,7 @@ Each question will have answers in bullet point format, with possible nested ite
 ### Collections
 - [What are all of the pieces of the Collections framework?](#what-are-all-of-the-pieces-of-the-collections-framework)
 - [Compare and contrast Sets, Queues, Lists, and Maps](#compare-and-contrast-sets-queues-lists-and-maps)
-- [Hashmap v Hashtable, HashSet v TreeSet, Set v List](#hashmap-v-hashtable-hashset-v-treeset-set-v-list)
+- [HashMap v Hashtable, HashSet v TreeSet, Set v List](#hashmap-v-hashtable-hashset-v-treeset-set-v-list)
 - [Collection v Collections](#collection-v-collections)
 - [How does Iterable fit in?](#how-does-Iterable-fit-in)
 
@@ -420,12 +420,39 @@ Each question will have answers in bullet point format, with possible nested ite
   - unmodifiableSortedSet
 
 #### Compare and contrast Sets, Queues, Lists, and Maps
+- Sets
+  - Do not allow duplicates
+  - Does not allow accessing by index
+    - Instead check for existence
+- Queues
+  - Items are added (pushed) and removed (popped) in the order in which they were added
+- Lists
+  - Allow duplicates
+  - First element has index 0, last has index -1
+- Maps
+  - Allow duplicates
+  - Index elements by key
 
-#### Hashmap v Hashtable, HashSet v TreeSet, Set v List
+#### HashMap v Hashtable, HashSet v TreeSet, Set v List
+- HashMap v Hashtable
+  - HashMap allows nulls
+  - HashMap is unsynchronized
+- HashSet v TreeSet
+  - HashSet doesn't guarantee ordering
+  - HashSet uses .equals instead of .compareTo
+  - HashSet backed by hash table instead of red-black tree
+  - HashSet allows one null
+  - HashSet internally implemented using HashMap instead of TreeMap
+  - HashSet is faster
+- Set v List
+  - Set is not indexed
+  - Set is unique
 
 #### Collection v Collections
+- Collection is an interface and Collections is a library of methods that work on the Collection interface
 
 #### How does Iterable fit in?
+- Iterable is an interface that allows things from collections to be iterated through in loops
 
 ### Comparing
 - [How do I compare two objects in Java?](#how-do-i-compare-two-objects-in-java)
@@ -434,12 +461,19 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do they work in the background?](#how-do-they-work-in-the-background)
 
 #### How do I compare two objects in Java?
+- In terms of sorting (in which I am assuming this is referring) there are two ways, you could either implement the `Comparable` interface or the `Comparator` interface
 
 #### Comparable v Comparator?
+- `Comparable` implements the `.compareTo()` method, which compares the current object to another
+- `Comparator` implements the `.compare()` method, which compares two objects to each other
 
 #### Lambda functions: What are they? When can I use them?
+- Lambda functions are used mainly in place of `Consumer` implementations, such as in `.forEach()` loops
+  - `myArray.forEach(num -> System.out.println(num));`
+- They can also be used for other things, but that's arguably the most-used reason they are used
 
 #### How do they work in the background?
+- They do all of the work of building a Consumer implementation and running a for loop for us
 
 ## Threads, Packaging and Testing
 - [Threads](#threads)
@@ -454,12 +488,33 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What are some potential problems I can get with multithreading?](#what-are-some-potential-problems-i-can-get-multithreading)
 
 #### What is multithreading? Why do we want to do it?
+- Multithreading allows us to run more tasks at once
+  - I am able to load an enormous file while continuing execution of my program without any blocking the execution, for instance
 
 #### How can I make a thread in Java? Which way should I?
+- There are two ways to create a thread in Java:
+  - Create a class that implements the `Runnable` interface (correct method)
+  - Create a class that extends the `Thread` class (incorrect method) and override the `run()` method
 
 #### What are thread states?
+- The states that a thread can have, they are:
+  - New
+    - A new thread has been created
+  - Runnable
+    - The thread is running
+  - Timed waiting
+    - The thread is waiting for a timed period
+  - Waiting
+    - The thread is waiting for a certain process to be complete
+  - Blocked
+    - The thread is blocked from continuing execution
+  - Terminated
+    - The thread is terminated
 
 #### What are some thread methods? .join? .isAlive?
+- `.run()` starts the thread
+- `.join()` joins the current thread with the main thread
+- `.isAlive()` checks to see if the thread is not terminated
 
 #### What are some potential problems I can get with multithreading?
 
