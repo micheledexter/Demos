@@ -7,10 +7,10 @@ These questions relate to the following topics:
 Each question will have answers in bullet point format, with possible nested items for more specific examples.
 
 ## Hibernate, Annotations, Database Management and CRUD Methods
--[Hibernate](#hibernate)
--[Annotations](#annotations)
--[Database Management](#database-management)
--[Crud Methods](#crud-methods)
+- [Hibernate](#hibernate)
+- [Annotations](#annotations)
+- [Database Management](#database-management)
+- [Crud Methods](#crud-methods)
 
 ### Hibernate
 - [What is an ORM? Why use them?](#what-is-an-orm-why-use-them)
