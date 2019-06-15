@@ -26,7 +26,7 @@ Each question will have answers in bullet point format, with possible nested ite
   - Additionally, depending on the level of skill a developer has, they _tend_ to be better at creating SQL queries than the average developer because let's be honest: most developers probably don't put that much of their time into learning SQL
 
 #### What is Hibernate?
-- [Hibernate](#https://hibernate.org/) is an ORM
+- [Hibernate](https://hibernate.org/) is an ORM
 - It was originally created by Gavin King, who hated how much SQL he had to write, so he single-handedly wrote Hibernate to start doing the work for himself as well as other developers who would appreciate it
 
 #### What is JPA?
@@ -36,33 +36,30 @@ Each question will have answers in bullet point format, with possible nested ite
   - Hibernate is called a "JPA Provider"
 
 #### What are the interfaces of Hibernate?
-- [**@Criteria**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Criteria.html)
-  - `Criteria` is a simplified API for retrieving entities by composing `Criterion` objects
-- [**@EntityNameResolver**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/EntityNameResolver.html)
-  - Contract for resolving an entity-name from a given entity instance
-- [**@Filter**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Filter.html)
-  - Type definition of Filter
-- [**@Interceptor**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Interceptor.html)
-  - Allows user code to inspect and/or change property values.
-- [**@Query**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Query.html)
-  - An object-oriented representation of a Hibernate query.
-- [**@ScrollableResults**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/ScrollableResults.html)
-  - A result iterator that allows moving around within the results by arbitrary increments.
-- [**@Session**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Session.html)
-  - The main runtime interface between a Java application and Hibernate.
-- [**@SessionFactory**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SessionFactory.html)
-  - Creates `Session`s.
-- [**@SQLQuery**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SQLQuery.html)
-  - Allows the user to declare the types and select list injection points of all entities returned by the query.
-- [**@StatelessSession**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/StatelessSession.html)
-  - A command-oriented API for performing bulk operations against a database.
-  - A stateless session does not implement a first-level cache nor interact with any second-level cache, nor does it implement transactional write-behind or automatic dirty checking, nor do operations cascade to associated instances.
-- [**@Transaction**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Transaction.html)
-  - Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation.
+  | Annotation | Description |
+  | --- | --- |
+  | [**`@Criteria`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Criteria.html) | `Criteria` is a simplified API for retrieving entities by composing `Criterion` objects |
+  | [**`@EntityNameResolver`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/EntityNameResolver.html) | Contract for resolving an entity-name from a given entity instance |
+  | [**`@Filter`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Filter.html) | Type definition of Filter
+  | [**`@Interceptor`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Interceptor.html) | Allows user code to inspect and/or change property values. |
+  | [**`@Query`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Query.html) | An object-oriented representation of a Hibernate query. |
+  | [**`@ScrollableResults`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/ScrollableResults.html) | A result iterator that allows moving around within the results by arbitrary increments. |
+  | [**`@Session`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Session.html) | The main runtime interface between a Java application and Hibernate. |
+  | [**`@SessionFactory`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SessionFactory.html) | Creates `Session`s. |
+  | [**`@SQLQuery`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SQLQuery.html) | Allows the user to declare the types and select list injection points of all entities returned by the query. |
+  | [**`@StatelessSession`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/StatelessSession.html) | A command-oriented API for performing bulk operations against a database. A stateless session does not implement a first-level cache nor interact with any second-level cache, nor does it implement transactional write-behind or automatic dirty checking, nor do operations cascade to associated instances. |
+  | [**`@Transaction`**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Transaction.html) | Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation. |
 
 #### How do I configure Hibernate?
+- Using the "hibernate.cfg.xml" file
+  - Root tag is called `hibernate-configuration`
+    - Only contains a tag `session-factory` which contains `property` tags
+  - Each `property` tag tells hibernate how a Session should be built
+- Using the Configuration class
 
 #### How can I register an object with Hibernate? (two ways)
+- Using either the Configuration class to add a class to the configuration directly, or
+- By using annotations above the class (which is probably the more "correct" way of doing things) that you want to register
 
 ### Annotations
 - [What are the required annotations for a model in Hibernate?](#what-are-the-required-annotations-for-a-model-in-hibernate)
@@ -71,12 +68,26 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What does @Transient do? ----- Look it up yourself](#what-does-transient-do-------look-it-up-yourself)
 
 #### What are the required annotations for a model in Hibernate?
+- First and foremost: **`@Entity`**, which tells Hibernate that this is a model
+  - Other than that, I think the only other truly required one is `@Id`, which tells Hibernate which field is the primary key
 
 #### What are some other annotations you've seen? What do they do?
+  | Annotation | Description |
+  | --- | --- |
+  | `@GeneratedValue` | Generally used with `@Id` to generate a value using something like `strategy = GenerationType.IDENTITY` |
+  | `@OneToOne` | Specifies a one to one relationship between two entities |
+  | `@OneToMany` | Specifies a one to many relationship between two entities |
+  | `@ManyToOne` | Specifies a many to one relationship between two entities |
+  | `@ManyToMany` | Specifies a many to many relationship between two entities |
+  | `@Column` | Specific instructions for how to handle a column |
+  | `@JoinColumn` | Specific instructions for how to handle a column that is also has a multiplicity annotation |
 
 #### How do I specify multiplicity with Hibernate?
+- By using the `@OneToOne`, `@OneToMany`, `@ManyToOne` or `ManyToMany` annotations
 
 #### What does @Transient do? ----- Look it up yourself
+- @Transient allows certain data to not be serialized
+  - If I have certain data that needs to be kept private, such as SSNs, I may not want that data to be written to be transferrable to any other system, so by using the @Transient annotation, I tell Hibernate that if any serialization of this entity occurs to ignore this attribute/field and it will be as though it never existed (won't even show the attribute as null)
 
 ### Database Management
 - [What is a SessionFactory? What is connection pooling? Does Hibernate use connection pooling?](#what-is-a-session-factory-what-is-connection-pooling-does-hibernate-use-connection-pooling)
@@ -86,6 +97,7 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is Criteria? How do I get one, how do I use it?](#what-is-criteria-how-do-i-get-one-how-do-i-use-it)
 
 #### What is a SessionFactory? What is connection pooling? Does Hibernate use connection pooling?
+- 
 
 #### What is a Session? What are some things it provides?
 
