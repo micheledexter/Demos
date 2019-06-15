@@ -36,28 +36,28 @@ Each question will have answers in bullet point format, with possible nested ite
   - Hibernate is called a "JPA Provider"
 
 #### What are the interfaces of Hibernate?
-- [@Criteria](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Criteria.html)
+- [**@Criteria**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Criteria.html)
   - `Criteria` is a simplified API for retrieving entities by composing `Criterion` objects
-- [@EntityNameResolver](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/EntityNameResolver.html)
+- [**@EntityNameResolver**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/EntityNameResolver.html)
   - Contract for resolving an entity-name from a given entity instance
-- [@Filter](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Filter.html)
+- [**@Filter**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Filter.html)
   - Type definition of Filter
-- [@Interceptor](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Interceptor.html)
+- [**@Interceptor**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Interceptor.html)
   - Allows user code to inspect and/or change property values.
-- [@Query](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Query.html)
+- [**@Query**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Query.html)
   - An object-oriented representation of a Hibernate query.
-- [@ScrollableResults](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/ScrollableResults.html)
+- [**@ScrollableResults**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/ScrollableResults.html)
   - A result iterator that allows moving around within the results by arbitrary increments.
-- [@Session](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Session.html)
+- [**@Session**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Session.html)
   - The main runtime interface between a Java application and Hibernate.
-- [@SessionFactory](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SessionFactory.html)
+- [**@SessionFactory**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SessionFactory.html)
   - Creates `Session`s.
-- [@SQLQuery](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SQLQuery.html)
+- [**@SQLQuery**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SQLQuery.html)
   - Allows the user to declare the types and select list injection points of all entities returned by the query.
-- [@StatelessSession](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/StatelessSession.html)
+- [**@StatelessSession**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/StatelessSession.html)
   - A command-oriented API for performing bulk operations against a database.
   - A stateless session does not implement a first-level cache nor interact with any second-level cache, nor does it implement transactional write-behind or automatic dirty checking, nor do operations cascade to associated instances.
-- [@Transaction](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Transaction.html)
+- [**@Transaction**](https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Transaction.html)
   - Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation.
 
 #### How do I configure Hibernate?
