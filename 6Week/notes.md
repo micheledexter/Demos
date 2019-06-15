@@ -21,12 +21,44 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How can I register an object with Hibernate? (two ways)](#how-can-i-register-an-object-with-hibernate-two-ways)
 
 #### What is an ORM? Why use them?
+- An ORM is an Object-Relational Mapper (or "Mapping" as a concept rather than an implementation), such as Hibernate
+- It allows us to use programming as an alternative for creating queries to our database, and provides features like i18n (internationalization) support and will automatically sanitize our queries for us right out of the box (based on which ORM we use)
+  - Additionally, depending on the level of skill a developer has, they _tend_ to be better at creating SQL queries than the average developer because let's be honest: most developers probably don't put that much of their time into learning SQL
 
 #### What is Hibernate?
+- [Hibernate](#https://hibernate.org/) is an ORM
+- It was originally created by Gavin King, who hated how much SQL he had to write, so he single-handedly wrote Hibernate to start doing the work for himself as well as other developers who would appreciate it
 
 #### What is JPA?
+- JPA stands for Java Persistence API
+- It is the standard for ORMs to follow
+  - If we explain this in programming terms, then a JPA is an interface (because it doesn't actually have any concrete implementations), and Hibernate would be an implementation of that interface
+  - Hibernate is called a "JPA Provider"
 
 #### What are the interfaces of Hibernate?
+- [**@Criteria**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Criteria.html)
+  - `Criteria` is a simplified API for retrieving entities by composing `Criterion` objects
+- [**@EntityNameResolver**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/EntityNameResolver.html)
+  - Contract for resolving an entity-name from a given entity instance
+- [**@Filter**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Filter.html)
+  - Type definition of Filter
+- [**@Interceptor**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Interceptor.html)
+  - Allows user code to inspect and/or change property values.
+- [**@Query**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Query.html)
+  - An object-oriented representation of a Hibernate query.
+- [**@ScrollableResults**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/ScrollableResults.html)
+  - A result iterator that allows moving around within the results by arbitrary increments.
+- [**@Session**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Session.html)
+  - The main runtime interface between a Java application and Hibernate.
+- [**@SessionFactory**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SessionFactory.html)
+  - Creates `Session`s.
+- [**@SQLQuery**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/SQLQuery.html)
+  - Allows the user to declare the types and select list injection points of all entities returned by the query.
+- [**@StatelessSession**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/StatelessSession.html)
+  - A command-oriented API for performing bulk operations against a database.
+  - A stateless session does not implement a first-level cache nor interact with any second-level cache, nor does it implement transactional write-behind or automatic dirty checking, nor do operations cascade to associated instances.
+- [**@Transaction**](#https://docs.jboss.org/hibernate/orm/3.2/api/org/hibernate/Transaction.html)
+  - Allows the application to define units of work, while maintaining abstraction from the underlying transaction implementation.
 
 #### How do I configure Hibernate?
 
