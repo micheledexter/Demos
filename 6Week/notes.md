@@ -349,13 +349,23 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do I use Transactions with Spring Data?](#how-do-i-use-transactions-with-spring-data)
 
 #### How does Spring Data work? What do I have to do to implement my DAOs?
-- 
+- By building queries for us (probably better than we could do ourselves) using repositories (DAOs), services and implementations
+- In order to use a DAO, it's as easy as writing an interface that extends `JpaRepository<MyObject, Integer>`
 
 #### What methods are provided for me using Spring Data?
+- `save()`
+- `delete()`
+- `findAll()`
+- `get()`
+- `findById()`
 
 #### How can I write new methods for Spring Data queries?
+- Using the `@Query` annotation above a method
 
 #### How do I use Transactions with Spring Data?
+- By using a transaction created from a session using `session.beginTransaction()` or
+- By using the `@Transactional` annotation above either a class or a method
+  - The difference here is that if the annotation is above a class that it has a cascading effect and applies it to every subsequent method within the class whereas if you want to use only certain methods within the class, you can use the `@Transactional` annotation to mark that they should be used as transactions
 
 ### Validation and Exceptions
 - [How can I validate data sent to me? What are some annotations for validation?](#how-can-i-validate-data-sent-to-me-what-are-some-annotations-for-validation)
@@ -364,9 +374,24 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is Swagger? Why use it? Is it for testing?](#what-is-swagger-why-use-it-is-it-for-testing)
 
 #### How can I validate data sent to me? What are some annotations for validation?
+- By using annotations (this is getting redundant)
+- `@NotNull` - the property cannot be null (duh)
+- `@AssertTrue` - asserts that the property is true
+- `@Min` - set minimum value
+- `@Max` - set maximum value
+- `@Email` - validates that the property is in email format
+- `@NotEmpty` - validates that the property isn't empty or null
 
 #### How do I do exception handling in Web MVC?
+- By using a class with the annotation `@ControllerAdvice` to mark the class of the exception handler class itself (api exception handler), then by using `@ExceptionHandler` for each individual exception handler
+  - Each exception handler has a value for a throwable class, and the method outlines what to do in the instance that the exception is actually thrown
 
 #### What kinds of exceptions should my custom exceptions be?
+- They _should_ be RuntimeExceptions, although there's technically nothing that prevents you from doing any kind of exception you wish
 
 #### What is Swagger? Why use it? Is it for testing?
+- Swagger is freaking amazing is what it is.
+- Swagger is an awesome UI tool for documenting, visualizing and testing*** out an API
+  - NOTE: THIS IS NOT UNIT TESTING
+- We use it mainly so we have a convenient interface for the reasons listed above
+- We do NOT use it for true testing, because the "testing" listed above is not unit testing.
