@@ -97,13 +97,36 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is Criteria? How do I get one, how do I use it?](#what-is-criteria-how-do-i-get-one-how-do-i-use-it)
 
 #### What is a SessionFactory? What is connection pooling? Does Hibernate use connection pooling?
-- 
+- A SessionFactory implementation uses a Configuration in order to build Session objects for connecting to the database
+- Connection pooling is used by Hibernate and is chosen in the hibernate.cfg.xml file
+  - If none is chosen, then the default connection pool is used
 
 #### What is a Session? What are some things it provides?
+- A Session used to get a connection to the database
+- Some things it provides are:
+  - `Transaction beginTransaction()` - for building a transaction, and it will return the `Transaction`
+  - `void clear()` - clear the session
+  - `Connection close()` - end the JDBC session and clean up
+  - `Criteria createCriteria(String entityName)` - create a new Criteria instance for the entity name
+  - `Criteria createCriteria(Class persistentClass)` - create a new Criteria for the entity class
+  - `Query createQuery(String queryString)` - create a Query instance from an HQL query string
+  - `SQLQuery createSQLQuery(String queryString)` - create an SQLQuery instance from an SQL query string
+  - `Session get(String entityName, Serializable id)` return the persistent instance of the entity with the given id or null
+  - `Serializable save(Object object)` - persist a transient object
+  - `void update(Object object)` - update the persistent object
+  - `void delete(Object object)` - delete the persistent object
 
 #### What is a Transaction? How do I get one, how do I use it?
+- A Transaction is a unit of work that follows the ACID principles
+- You can get one at your local Session by using `beginTransaction()` to initiate one
+- With that Transaction object, you can:
+  - `begin()` to start a new transaction (feels redundant )
+  - `rollback()` to rollback if something goes wrong
+  - `commit()` to end unit of work
+- This is used during a Session
 
 #### What is a Query? How do I get one, how do I use it?
+- A Query is HQL and can be attained using `createQuery()`
 
 #### What is Criteria? How do I get one, how do I use it?
 
@@ -115,14 +138,22 @@ Each question will have answers in bullet point format, with possible nested ite
 - [Delete-?](#delete-)
 
 #### What are all the CRUD methods provided by Session?
+- See list below
 
 #### Create-?
+- `save()` - save a new object
+- `saveOrUpdate()` - save a new object or update if already exists
 
 #### Read-?
+- `get()` get an entity by name and serializable id
 
 #### Update-?
+- `saveOrUpdate()` - save a new object or update if already exists
+- `update()` - update an entity, throw an exception if it already exists
+- `merge()` - update an entity regardless of whether or not the entity exists
 
 #### Delete-?
+- `delete()` - delete an object
 
 ## Fetching, Caching and Queries
 - [Fetching](#fetching)
@@ -136,12 +167,19 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What are circular relationships? How can we fix them?](#what-are-circular-relationships-how-can-we-fix-them)
 
 #### What is a proxy? Why do I want them? What are some problems?
+- A proxy is basically a placeholder for data from the database, like a Promise in JavaScript
+- By using proxies, we minimize the cost of our connection to the database, and increase the speed of our web app overall
+- The problem is that as a placeholder, it doesn't have any kind of actual data bound to it, so in order to resolve a proxy, we still need to query the database if we find that we need that data later on
 
 #### What is lazy initialization? Why do I want it? What are some problems?
+- Lazy initialization relies on proxies, and allows us to only get some of the data we need, and any nested data is replaced with proxies, which has the problems outlined above
 
 #### What is the difference between lazy and eager fetching?
+- Eager fetching goes as deep into nested fields as it can, which can result in problems of its own
 
 #### What are circular relationships? How can we fix them?
+- With eager fetching, we can get into circular relationships, where one object references another, which down the line has a nested object that was the original object, causing the whole fetching process to circle back around
+  - To fix this, we create a filter and reference it in our web configuration file
 
 ### Caching
 - [What are the states of an object in Hibernate?](#what-are-the-states-of-an-object-in-hibernate)
@@ -149,10 +187,17 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do L1 caches work? L2?](#how-do-l1-caches-work-l2)
 
 #### What are the states of an object in Hibernate?
+- Transient - The data is not associated with a hibernate session
+- Persistent - The data is associated with a hibernate session
+- Detached - The object is not connected to the database anymore, and anything that was not persistent is garbage collected
 
 #### What is a cache? Does Hibernate have caches?
+- A cache is a store of data for frequent use
+- Hibernate has 2 caches: L1 and L2 caches
 
 #### How do L1 caches work? L2?
+- L1 caches are used by individual sessions for keeping track of data
+- The L2 cache (singular) is for all of the most frequent data used by all of the L1 caches
 
 ### Queries
 - [How can I make a query in Hibernate?](#how-can-i-make-a-query-in-hibernate)
@@ -161,12 +206,21 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What are some of the benefits/restrictions of Criterias?](#what-are-some-of-the-benefitsrestrictions-of-criterias)
 
 #### How can I make a query in Hibernate?
+- By using the `@Query` annotation
+  - `@Query("FROM MyObject WHERE myobject_id = :id;`)
 
 #### What is HQL? How does it differ from SQL?
+- HQL stands for Hibernate Query Language, and it uses what looks like SQL to run queries, but having it go through Hibernate instead, which means that the query listed above actually runs the query `SELECT * FROM myobject WHERE myobject_id = [insert_id_here];`
+  - It will also get any additional things it needs from nested items
 
 #### Can I make SQL queries in Hibernate?
+- By using a session and [creating an **SQLQuery**](https://www.tutorialspoint.com/hibernate/hibernate_native_sql.htm) object using `pubcic SQLQuery createSQLQuery(String sqlQuery)`
 
 #### What are some of the benefits/restrictions of Criterias?
+- They are good for creating a set of criteria where there are a variable number of conditions placed on the result set
+  - You can go into as much or as little detail as you want to, specifying the tiniest details
+- Because you can specify tiny details, that means that they are specific to only one thing, and each Criteria can only be used for one thing
+  - Many more have to be made for different things, which can result in a lot of extra coding
 
 ## Spring, Spring Boot/Web MVC/Data, Validation and Exceptions
 - [Spring](#spring)
@@ -183,14 +237,36 @@ Each question will have answers in bullet point format, with possible nested ite
 - [Can I use Spring for non-web applications?](#can-i-use-spring-for-non-web-applications)
 
 #### What is Spring? Why use it?
+- Spring is a framework that provides inversion of control through dependency injection to give easily built structure of enterprise-level applications.
 
 #### What is IoC? Its upsides and downsides?
+- We give up control to Spring so Spring can manage our application
+- We do this for...
+  - Easier development
+  - Loosely coupled code
+- Downsides are...
+  - We have less control
+  - More complicated debugging
+  - A lot more interfaces
+  - It's more complicated
 
 #### What is DI? What is its purpose?
+- DI stands for Dependency Injection
+  - Some thing that Spring (in this case) gives to objects to manage
+- It's there so that we can have Spring manage our code for us
 
 #### What is a Spring Bean? How can I define one?
+- A spring bean is any object we give to Spring to manage
+- We can define one with (among others)...
+  - @Entity
+  - @Component
+  - @Service
+  - @Repository
+  - @Controller
+  - @RestController
 
 #### Can I use Spring for non-web applications?
+- Yes
 
 ### Spring Boot
 - [What is the BeanFactory? ApplicationContext? How do they relate?](#what-is-the-beanfactory-applicationcontext-how-do-they-relate)
@@ -200,14 +276,42 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What does @Autowired do?](#what-does-autowired-do)
 
 #### What is the BeanFactory? ApplicationContext? How do they relate?
+- The BeanFactory is the root interface for accessing a Spring Bean container, and is where beans are made
+- ApplicationContext is what provides configuration for the application
+- Both are part of the Spring Bean lifecycle
 
 #### WHAT IS THE SPRING BEAN LIFECYCLE???
+- The bean is made
+- Wiring and initial info
+- (Set Bean name aware)
+- (Set BeanFactory aware)
+- (Set ApplicationContext aware)
+- BeforeInitializationBeanPostProcessor
+- InitializingBeans
+- CustomInit @PostConstruct or in XML
+- AfterInitializationBeanPostProcessor
+- inUse...
+- DisposableBeans
+- CustomDestroy @PreDestroy or in XML
+- ... Then the bean is destroyed
 
 #### What is Spring Boot? Why do we use it?
+- Spring boot is an opinionated configuration of Spring
+- It has certain opinions on how we want to use Spring (that are usually correct)
+  - I never want to use XML, I will use annotations for everything
+  - I provide an embedded Tomcat server
+  - Provides a YML file for configuring Spring Boot
 
 #### What are the stereotype annotations of Spring?
+- @Component
+- @Service
+- @Repository
+- @Controller
+- @RestController
+- All are components in one form or another
 
 #### What does @Autowired do?
+- Tells Spring that I want to use a service in my code and to figure out how to please figure out how to get it wired in
 
 ### Spring Web MVC
 - [How does the Java EE architecture with servlets work?](#how-does-the-java-ee-architecture-with-servlets-work)
@@ -216,12 +320,27 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do I set up endpoints using Spring?](#how-do-i-set-up-endpoints-using-spring)
 
 #### How does the Java EE architecture with servlets work?
+- Tomcat attached to web container
+- Web container has servlets
+- Tomcat talks to each servlet
+- Each servlet talks to deployment_dispatcher.xml
 
 #### How does Web MVC's architecture work? How does it compare to the traditional Java EE?
+- Tomcat attached to web container
+- Web container has dispatcher services
+- 
 
 #### How does Web MVC know which controllers to use?
+- Initially, because of HandlerMapping
+  - Anything that has the @Controller or @RestController annotation is internally stored and marked as a controller for Web MVC to use
+  - Mapping methods are used to say which type of request and which URI should be handled by which method using annotations
+  - @RequestMapping - catch-all or specified using `method = [method]` at a URI
+  - @GetMapping - GET request at a URI
+  - @PostMapping - POST request at a URI
+  - etc.
 
 #### How do I set up endpoints using Spring?
+- Using mapping annotations as listed above
 
 ### Spring Data
 - [How does Spring Data work? What do I have to do to implement my DAOs?](#how-does-spring-data-work-what-do-i-have-to-do-to-implement-my-daos)
@@ -230,6 +349,7 @@ Each question will have answers in bullet point format, with possible nested ite
 - [How do I use Transactions with Spring Data?](#how-do-i-use-transactions-with-spring-data)
 
 #### How does Spring Data work? What do I have to do to implement my DAOs?
+- 
 
 #### What methods are provided for me using Spring Data?
 
