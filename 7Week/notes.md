@@ -278,7 +278,7 @@ These questions relate to the following topics:
 - `EXPOSE` - to open up ports on the docker network
 - `ARG` - to get build arguments
 - `ENV` - environment variables when container is running
-- `ENTRY POINT/CMD` - what the image does when the container is started
+- `ENTRYPOINT/CMD` - what the image does when the container is started
 
 #### What is orchestration?
 - Container orchestration (-_-)
