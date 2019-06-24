@@ -84,10 +84,18 @@ These questions relate to the following topics:
     ```
 
 #### What is code weaving? A proxy?
+- Code weaving is using annotations to tell spring where we want to have certain code run and how
+- Spring AOP uses proxies to weave in code
+  - JDK dynamic proxy – the preferred way for Spring AOP. Whenever the targeted object implements even one interface, then JDK dynamic proxy will be used
+  - CGLIB proxy – if the target object doesn’t implement an interface, then CGLIB proxy can be used
 
 #### What is the proceed method? How can we use it?
+- It's used for the `@Around` advice annotation
+- We use it as shown in the example two questions up
 
 #### What does a pointcut expression look like?
+- Like this:
+  - `"execution(com.test.sample.TargetService.save(..))"`
 
 ## Microservices, Spring Cloud and Interservice Communication
 - [Microservices](#microservices)
