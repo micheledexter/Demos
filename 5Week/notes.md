@@ -525,8 +525,13 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What are the build lifecycle stages?](#what-are-the-build-lifecycle-stages)
 
 #### What is maven?
+- Maven is a package dependency manager
+- All we do is tell maven which dependencies we need and it'll take care of importing them along with their respective dependencies so that we can use them within our project
 
 #### What is a POM?
+- A Project Object Model file
+- I don't *think* this is in anything other than XML (although I've been known to be wrong, so don't quote me on that one) but it's a file a lot like package.json that keeps track of all of the project information 
+  - The name of the 
 
 #### How do I get dependencies?
 
