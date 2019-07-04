@@ -531,7 +531,7 @@ Each question will have answers in bullet point format, with possible nested ite
 #### What is a POM?
 - A Project Object Model file
 - I don't *think* this is in anything other than XML (although I've been known to be wrong, so don't quote me on that one) but it's a file a lot like package.json that keeps track of all of the project information 
-  - The name of the 
+  - The name of the of the project, the version, the dependencies required, etc.
 
 #### How do I get dependencies?
 
