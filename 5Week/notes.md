@@ -534,8 +534,10 @@ Each question will have answers in bullet point format, with possible nested ite
   - The name of the of the project, the version, the dependencies required, etc.
 
 #### How do I get dependencies?
+- By putting them in the in the dependencies tag of the POM
 
 #### What are the build lifecycle stages?
+
 
 ### Testing
 - [What is JUnit? What testing tools does it provide us?](#what-is-junit-what-testing-tools-does-it-provide-us)
