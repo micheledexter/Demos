@@ -338,10 +338,12 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What are the different types of reads we can get within transactions?
 - For a particular transaction:
-  - Committed
-    - A read has been committed (persisted) to the database
-  - Uncommitted/non-committed
-    - A read has not been committed (persisted) to the database
+  - Dirty Read
+    - Reading information that has not been persisted to the database
+  - Non Repeatable Read
+    - Data in a row has changed since the transaction
+  - Phantom
+    - Records from a query no longer exist in the database
 
 ### What are the transaction isolation levels and what do they prevent?
 - **Read uncommitted**
