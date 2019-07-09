@@ -631,15 +631,15 @@ Each question will have answers in bullet point format, with possible nested ite
 - No, you can only have one
 
 ### What are the lifecycle hooks of a React component?
-| Hook | Function |
-| --- | --- |
-| `componentDidCatch` | Something went wrong |
-| `componentDidMount` | The component mounted |
-| `componentDidUpdate` | The component updated |
-| `componentWillMount` | The component is about to be mounted |
-| `componentWillReceiveProps` | The component is about to receive props |
-| `componentWillUnmount` | The component is about to unmount |
-| `componentWillUpdate` | The component is about to update |
+| Hook                        | Function                                      |
+| --------------------------- | --------------------------------------------- |
+| `componentDidCatch`         | Something went wrong                          |
+| `componentDidMount`         | The component mounted                         |
+| `componentDidUpdate`        | The component updated                         |
+| `componentWillMount`        | The component is about to be mounted          |
+| `componentWillReceiveProps` | The component is about to receive props       |
+| `componentWillUnmount`      | The component is about to unmount             |
+| `componentWillUpdate`       | The component is about to update              |
 
 ### What does it mean to build your React project?
 - It means that it's ready for production
