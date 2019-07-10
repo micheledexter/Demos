@@ -657,7 +657,7 @@ Each question will have answers in bullet point format, with possible nested ite
   - `<div>My name is {this.state.myName}</div>`
 
 ### How would you create a table from an array containing the data with React?
-- Using the `.map` function
+- Using the `.map()` function
 
 ### React.Component<one, two> takes two types in the generics, what does the first parameter of the generic represent and what does the second parameter represent?
 - The first parameter represents the props being passed into the component while the second parameter represents the structure of the state of the component
