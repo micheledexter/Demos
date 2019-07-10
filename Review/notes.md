@@ -140,6 +140,7 @@ Each question will have answers in bullet point format, with possible nested ite
 
 ### What are wrapper classes? Why are they needed?
 - Wrapper classes are the classes that match the primitive value types:
+
   | Primitive Data Type | Wrapper Class |
   | ------------------- | ------------- |
   | char                | Character     |

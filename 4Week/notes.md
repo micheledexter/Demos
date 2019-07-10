@@ -17,19 +17,36 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is the virtual DOM? How does it compare to the DOM?](#what-is-the-virtual-dom-how-does-it-compare-to-the-dom)
 
 ### What is React? Why use it?
-- React is a library (it's hard for me to wrap my head around, so I consider it a LITERAL LIBRARY) of 
+- React is a library for creating reactive single-page web applications
+- React uses what's known as a the virtual DOM in order to update and re-render only the parts of the page it needs to and which have received updates
 
 ### Is React a library or a framework?
+- A library. Why? Because Facebook said so
 
 ### What is the difference between React and ReactDOM?
+- React package contains: 
+  - React.createElement
+  - React.createClass
+  - React.Component
+  - React.PropTypes
+  - React.Children
+- React-dom package contains:
+  - ReactDOM.render
+  - ReactDOM.unmountComponentAtNode
+  - ReactDOM.findDOMNode
 
 ### How do we render a React component?
+- Using the `.render()` function, otherwise for stateless components we just return what we want to have rendered
 
 ### How many HTML pages does our React app use?
+- 1
 
 ### What is App.tsx? Why do we structure it in that way?
+- "App.tsx" is basically the "root" component of our entire application, so everything will be a child of "App" in one way or another
 
 ### What is the virtual DOM? How does it compare to the DOM?
+- The virtual DOM is basically a shadow of the DOM
+- Changes are made to the virtual DOM by React but are not updated to the DOM until all changes have occurred because actually changing the DOM is an expensive process, so waiting for the "transaction" of changes to occur first allows for there to be as few modifications to the DOM as possible, resulting in a smoother user experience
 
 ## JSX, components, props, and the component lifecycle 
 - [What is JSX? Can we put it in the browser natively?](#what-is-jsx-can-we-put-it-in-the-browser-natively)
@@ -46,6 +63,8 @@ Each question will have answers in bullet point format, with possible nested ite
 - [What is a pure component vs a normal one? A higher order one?](#what-is-a-pure-component-vs-a-normal-one-a-higher-order-one)
 
 ### What is JSX? Can we put it in the browser natively?
+- JavaScript XML, the code we use in React
+- It cannot be put in the browser natively, and has to be transpiled into JavaScript using babel and
 
 ### What are the roles of Babel and Webpack?
 
